@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+
 const faqs = [
   {
     q: "What is Jovia Network?",
@@ -5,30 +10,57 @@ const faqs = [
   },
   {
     q: "How do I join?",
-    a: "Create a free account, then upgrade to a membership tier whenever you're ready.",
+    a: "Create a free account, then start a session whenever you're ready to begin earning toward a reward tier.",
   },
   {
     q: "Can I cancel anytime?",
-    a: "Yes. Membership tiers are month-to-month with no long-term commitment.",
+    a: "Yes. Membership is free to join with no long-term commitment.",
+  },
+  {
+    q: "How are reward tiers calculated?",
+    a: "Placeholder mechanic — the amounts and durations shown across the site mirror the brand reference and will be replaced with the real reward logic.",
   },
 ];
 
 export function Faq() {
+  const [openIndex, setOpenIndex] = useState(0);
+
   return (
     <section id="faq" className="px-6 py-24">
       <div className="mx-auto max-w-3xl">
-        <h2 className="text-center text-3xl font-bold text-foreground sm:text-4xl">
-          Frequently asked questions
-        </h2>
+        <SectionHeading badge="QUESTIONS" title="Jovia, answered" />
 
-        <dl className="mt-12 divide-y divide-border-soft">
-          {faqs.map((item) => (
-            <div key={item.q} className="py-6">
-              <dt className="text-lg font-semibold text-foreground">{item.q}</dt>
-              <dd className="mt-2 text-muted">{item.a}</dd>
-            </div>
-          ))}
-        </dl>
+        <div className="mt-12 divide-y divide-border-soft rounded-2xl border border-border bg-surface">
+          {faqs.map((item, i) => {
+            const open = openIndex === i;
+            return (
+              <div key={item.q} className="px-6">
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(open ? -1 : i)}
+                  aria-expanded={open}
+                  className="flex w-full items-center justify-between gap-4 py-5 text-left"
+                >
+                  <span className="text-sm font-semibold text-foreground sm:text-base">
+                    {item.q}
+                  </span>
+                  <span
+                    className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs transition ${
+                      open
+                        ? "border-gold-500 text-gold-400"
+                        : "border-border text-muted-soft"
+                    }`}
+                  >
+                    {open ? "×" : "+"}
+                  </span>
+                </button>
+                {open && (
+                  <p className="pb-5 text-sm leading-relaxed text-muted">{item.a}</p>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

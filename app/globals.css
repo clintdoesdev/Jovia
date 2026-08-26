@@ -2,23 +2,24 @@
 
 /*
  * Jovia design tokens.
- * Palette derived from the Jovia brand references: a near-black violet
- * base, an electric violet/magenta glow accent, and a warm gold accent
- * used for CTAs and the wordmark. This is a single fixed dark theme by
- * design (the brand doesn't have a light variant), so tokens are declared
- * once on :root rather than branched by color-scheme.
+ * Palette derived from the Jovia brand references: a near-black base, an
+ * electric violet/magenta glow accent, and a warm gold accent used for
+ * CTAs and the wordmark (kept distinct from Evermore's green/mint, per
+ * brand). Layout/spacing/component conventions (gradient banner bands,
+ * pill badges, card treatment, section rhythm) are modeled on Evermore.
+ * This is a single fixed dark theme by design.
  */
 :root {
-  --color-ink: #0b0414;
-  --color-ink-raised: #150a25;
-  --color-surface: #1c0f33;
-  --color-surface-raised: #271745;
-  --color-border: #3a2456;
-  --color-border-soft: #2a1a44;
+  --color-ink: #05040a;
+  --color-ink-raised: #0c0a16;
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-surface-raised: rgba(255, 255, 255, 0.05);
+  --color-border: rgba(255, 255, 255, 0.09);
+  --color-border-soft: rgba(255, 255, 255, 0.06);
 
   --color-violet-400: #c084fc;
   --color-violet-500: #a855f7;
-  --color-violet-600: #9021e0;
+  --color-violet-600: #8b1fe0;
   --color-magenta-500: #d946ef;
 
   --color-gold-300: #ffd66b;
@@ -29,14 +30,21 @@
   --color-money-400: #4ade80;
   --color-money-500: #22c55e;
 
-  --color-foreground: #f7f3ff;
-  --color-muted: #bfaee0;
-  --color-muted-soft: #8f7bb3;
+  --color-foreground: #f8f6fc;
+  --color-muted: #a99cc4;
+  --color-muted-soft: #766a90;
 
+  --gradient-banner: linear-gradient(
+    115deg,
+    #2c0f4d 0%,
+    #4c1a6b 32%,
+    #241355 68%,
+    #0c0a16 100%
+  );
   --gradient-glow: radial-gradient(
-    ellipse at top,
-    rgba(168, 85, 247, 0.35),
-    transparent 60%
+    ellipse 60% 50% at 50% 0%,
+    rgba(168, 85, 247, 0.28),
+    transparent 65%
   );
   --gradient-cta: linear-gradient(
     135deg,
@@ -44,7 +52,7 @@
     var(--color-gold-500)
   );
   --gradient-button: linear-gradient(
-    145deg,
+    135deg,
     var(--color-magenta-500),
     var(--color-violet-600)
   );
@@ -87,4 +95,17 @@ body {
 ::selection {
   background: var(--color-violet-500);
   color: var(--color-ink);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
 }

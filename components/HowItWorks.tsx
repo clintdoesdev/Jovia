@@ -1,45 +1,53 @@
+import { Badge } from "@/components/ui/Badge";
+import { ButtonLink } from "@/components/ui/Button";
+
 const steps = [
   {
+    n: "01",
     title: "Create your account",
-    body: "Sign up in under a minute and set up your Jovia membership profile.",
+    body: "Sign up with your name, email, and a secure password in under a minute.",
   },
   {
-    title: "Stay active",
-    body: "Engage with the network — every session you complete builds toward your rewards.",
+    n: "02",
+    title: "Start a session",
+    body: "Activate a session whenever you're ready to start earning toward a reward tier.",
   },
   {
+    n: "03",
+    title: "Reach a tier",
+    body: "The longer an active session runs, the higher the reward tier you reach.",
+  },
+  {
+    n: "04",
     title: "Collect your value",
-    body: "Cash out or redeem what you've earned once you hit a tier threshold.",
+    body: "Track everything and manage your account from your member dashboard.",
   },
 ];
 
 export function HowItWorks() {
   return (
     <section id="how-it-works" className="px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-            How Jovia works
+      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div>
+          <Badge>GETTING STARTED</Badge>
+          <h2 className="mt-4 text-3xl font-bold text-foreground sm:text-4xl">
+            How to join Jovia
           </h2>
-          <p className="mt-4 text-muted">
-            A simple loop: join, participate, get rewarded. Placeholder
-            steps — refine once the real product flow is defined.
+          <p className="mt-4 max-w-md text-muted">
+            Creating a Jovia account takes less than a minute — here&apos;s
+            exactly what happens when you join.
           </p>
+          <ButtonLink href="/signup" variant="ghost" className="mt-7">
+            Join us now
+          </ButtonLink>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-3">
-          {steps.map((step, i) => (
-            <div
-              key={step.title}
-              className="rounded-2xl border border-border bg-surface/60 p-6"
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[image:var(--gradient-button)] text-sm font-bold text-foreground">
-                {i + 1}
-              </span>
-              <h3 className="mt-4 text-lg font-semibold text-foreground">
-                {step.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted">{step.body}</p>
+        <div className="grid gap-5 sm:grid-cols-2">
+          {steps.map((step) => (
+            <div key={step.n} className="rounded-2xl border border-border bg-surface p-6">
+              <span className="text-2xl font-extrabold text-gold-400">{step.n}</span>
+              <h3 className="mt-3 text-base font-semibold text-foreground">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{step.body}</p>
             </div>
           ))}
         </div>

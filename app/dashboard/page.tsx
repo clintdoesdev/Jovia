@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/session";
 import { logoutAction } from "@/lib/actions/auth";
 import { Logo } from "@/components/Logo";
+import { Badge } from "@/components/ui/Badge";
 import { membershipTiers } from "@/lib/config/tiers";
 import { Button } from "@/components/ui/Button";
 
@@ -16,7 +17,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="min-h-screen">
-      <header className="flex items-center justify-between border-b border-border-soft/60 px-6 py-4">
+      <header className="sticky top-0 z-50 flex items-center justify-between border-b border-border-soft bg-ink/85 px-6 py-4 backdrop-blur-md">
         <Logo />
         <form action={logoutAction}>
           <Button type="submit" variant="ghost">
@@ -25,11 +26,12 @@ export default async function DashboardPage() {
         </form>
       </header>
 
-      <main className="mx-auto max-w-4xl px-6 py-16">
-        <h1 className="text-2xl font-bold text-foreground">
+      <main className="mx-auto max-w-5xl px-6 py-16">
+        <Badge>MEMBER DASHBOARD</Badge>
+        <h1 className="mt-4 text-3xl font-bold text-foreground">
           Welcome back, {user.name.split(" ")[0]}
         </h1>
-        <p className="mt-2 text-muted">
+        <p className="mt-2 max-w-lg text-muted">
           This is a placeholder member dashboard — build out the real
           membership experience here.
         </p>
@@ -38,11 +40,9 @@ export default async function DashboardPage() {
           {membershipTiers.map((tier) => (
             <div
               key={tier.id}
-              className="rounded-2xl border border-border bg-surface/60 px-5 py-8 text-center"
+              className="rounded-2xl border border-border bg-surface px-5 py-8 text-center"
             >
-              <span className="text-3xl font-extrabold text-money-500">
-                {tier.amount}
-              </span>
+              <span className="text-3xl font-extrabold text-money-500">{tier.amount}</span>
               <p className="mt-1 text-sm text-muted">every {tier.duration.toLowerCase()}</p>
             </div>
           ))}

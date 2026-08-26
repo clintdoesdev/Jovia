@@ -1,3 +1,5 @@
+import { Check } from "lucide-react";
+
 const benefits = [
   "Earn rewards across four membership tiers",
   "Free to join, no card required",
@@ -18,8 +20,8 @@ export function SignupBenefits() {
       <ul className="mt-6 space-y-3.5">
         {benefits.map((benefit) => (
           <li key={benefit} className="flex items-start gap-3 text-sm text-muted">
-            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-money-500/15 text-xs text-money-500">
-              ✓
+            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-money-500/15 text-money-500">
+              <Check size={12} strokeWidth={3} />
             </span>
             {benefit}
           </li>

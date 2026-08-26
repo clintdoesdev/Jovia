@@ -1,33 +1,34 @@
+import { BarChart3, Smartphone, Shield, Trophy, GraduationCap, Users } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const features = [
   {
-    icon: "📊",
+    icon: BarChart3,
     title: "Active session rewards",
     body: "Every completed session earns toward your tier — tracked automatically from your dashboard.",
   },
   {
-    icon: "📱",
+    icon: Smartphone,
     title: "Member perks",
     body: "Unlock community perks and milestones as your account grows with the network.",
   },
   {
-    icon: "🛡️",
+    icon: Shield,
     title: "Account protection",
     body: "Your membership, activity, and rewards are secured behind signed sessions and encrypted credentials.",
   },
   {
-    icon: "🏆",
+    icon: Trophy,
     title: "Tiered payouts",
     body: "Four reward tiers scale with how long you stay active in a session — see Membership tiers below.",
   },
   {
-    icon: "🎓",
+    icon: GraduationCap,
     title: "Jovia resources",
     body: "Guides and resources to help new members get the most out of their membership from day one.",
   },
   {
-    icon: "👥",
+    icon: Users,
     title: "Community",
     body: "Join a growing circle of Jovia members sharing wins, strategies, and momentum.",
   },
@@ -49,8 +50,8 @@ export function FeatureGrid() {
               key={feature.title}
               className="rounded-2xl border border-border bg-surface p-7 transition hover:border-violet-500/50"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold-500/10 text-lg">
-                {feature.icon}
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold-500/10 text-gold-400">
+                <feature.icon size={20} strokeWidth={2} />
               </span>
               <h3 className="mt-5 text-base font-semibold text-foreground">
                 {feature.title}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Plus, X } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const faqs = [
@@ -45,13 +46,13 @@ export function Faq() {
                     {item.q}
                   </span>
                   <span
-                    className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs transition ${
+                    className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition ${
                       open
                         ? "border-gold-500 text-gold-400"
                         : "border-border text-muted-soft"
                     }`}
                   >
-                    {open ? "×" : "+"}
+                    {open ? <X size={13} /> : <Plus size={13} />}
                   </span>
                 </button>
                 {open && (

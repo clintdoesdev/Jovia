@@ -1,3 +1,4 @@
+import { Star } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const testimonials = [
@@ -25,7 +26,7 @@ function Stars() {
   return (
     <div className="flex gap-1 text-gold-400">
       {Array.from({ length: 5 }).map((_, i) => (
-        <span key={i}>★</span>
+        <Star key={i} size={16} fill="currentColor" strokeWidth={0} />
       ))}
     </div>
   );

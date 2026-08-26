@@ -1,3 +1,4 @@
+import { FaInstagram, FaXTwitter, FaFacebookF } from "react-icons/fa6";
 import { Logo } from "@/components/Logo";
 
 const jovieLinks = [
@@ -13,9 +14,9 @@ const supportLinks = [
 ];
 
 const socials = [
-  { label: "Instagram", icon: "◎" },
-  { label: "X", icon: "𝕏" },
-  { label: "Facebook", icon: "f" },
+  { label: "Instagram", Icon: FaInstagram },
+  { label: "X", Icon: FaXTwitter },
+  { label: "Facebook", Icon: FaFacebookF },
 ];
 
 export function Footer() {
@@ -33,9 +34,9 @@ export function Footer() {
               <span
                 key={s.label}
                 aria-label={s.label}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-sm text-muted"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted"
               >
-                {s.icon}
+                <s.Icon size={14} />
               </span>
             ))}
           </div>

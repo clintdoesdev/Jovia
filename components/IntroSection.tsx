@@ -26,7 +26,7 @@ export function IntroSection() {
               <br className="hidden sm:block" /> and pays you for it
             </>
           }
-          description="The Jovia website is the official home of the network. Jovia is a membership platform built to turn consistent, everyday engagement into real, tracked rewards."
+          description="The Jovia website is the official home of Jovia Network — a membership platform built to turn consistent, everyday engagement into real, tracked rewards."
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2">

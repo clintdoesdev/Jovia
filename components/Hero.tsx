@@ -25,7 +25,7 @@ export function Hero() {
           <Badge dot>THE OFFICIAL JOVIA WEBSITE</Badge>
 
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem]">
-            Jovia Network —{" "}
+            Jovia Website —{" "}
             <span className="bg-[image:var(--gradient-cta)] bg-clip-text text-transparent">
               Every Second
             </span>{" "}
@@ -33,9 +33,10 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted sm:text-lg">
-            Welcome to the official Jovia Network website — a membership
-            platform where staying active keeps paying off. Placeholder copy:
-            swap in Jovia&apos;s real value proposition whenever it&apos;s ready.
+            Welcome to the official Jovia website — home of Jovia Network, a
+            membership platform where staying active keeps paying off.
+            Placeholder copy: swap in Jovia&apos;s real value proposition
+            whenever it&apos;s ready.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -60,7 +61,7 @@ export function Hero() {
         <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-border shadow-[0_30px_80px_-30px_rgba(168,85,247,0.5)]">
           <Image
             src="/brand/hero-art.jpg"
-            alt=""
+            alt="Jovia Network logo over a purple and gold abstract background"
             fill
             priority
             className="object-cover"

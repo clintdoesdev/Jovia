@@ -7,7 +7,10 @@ import { Badge } from "@/components/ui/Badge";
 import { membershipTiers } from "@/lib/config/tiers";
 import { Button } from "@/components/ui/Button";
 
-export const metadata: Metadata = { title: "Dashboard — Jovia Network" };
+export const metadata: Metadata = {
+  title: "Dashboard — Jovia Network",
+  robots: { index: false, follow: false },
+};
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();

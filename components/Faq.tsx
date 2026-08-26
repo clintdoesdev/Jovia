@@ -3,25 +3,7 @@
 import { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-
-const faqs = [
-  {
-    q: "What is Jovia Network?",
-    a: "Jovia is a membership platform. This is placeholder copy — replace it with Jovia's real value proposition when it's ready.",
-  },
-  {
-    q: "How do I join?",
-    a: "Create a free account, then start a session whenever you're ready to begin earning toward a reward tier.",
-  },
-  {
-    q: "Can I cancel anytime?",
-    a: "Yes. Membership is free to join with no long-term commitment.",
-  },
-  {
-    q: "How are reward tiers calculated?",
-    a: "Placeholder mechanic — the amounts and durations shown across the site mirror the brand reference and will be replaced with the real reward logic.",
-  },
-];
+import { homeFaqs as faqs } from "@/lib/content/faq";
 
 export function Faq() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -62,6 +44,22 @@ export function Faq() {
             );
           })}
         </div>
+
+        <p className="mt-6 text-center text-sm text-muted-soft">
+          Want more detail? See{" "}
+          <a href="/jovia-platform" className="font-medium text-gold-400 hover:underline">
+            the Jovia platform
+          </a>
+          , the{" "}
+          <a href="/jovia-app" className="font-medium text-gold-400 hover:underline">
+            Jovia app
+          </a>
+          , or{" "}
+          <a href="/how-to-register" className="font-medium text-gold-400 hover:underline">
+            how to register
+          </a>
+          .
+        </p>
       </div>
     </section>
   );

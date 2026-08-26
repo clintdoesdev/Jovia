@@ -1,28 +1,6 @@
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
-
-const steps = [
-  {
-    n: "01",
-    title: "Create your account",
-    body: "Sign up with your name, email, and a secure password in under a minute.",
-  },
-  {
-    n: "02",
-    title: "Start a session",
-    body: "Activate a session whenever you're ready to start earning toward a reward tier.",
-  },
-  {
-    n: "03",
-    title: "Reach a tier",
-    body: "The longer an active session runs, the higher the reward tier you reach.",
-  },
-  {
-    n: "04",
-    title: "Collect your value",
-    body: "Track everything and manage your account from your member dashboard.",
-  },
-];
+import { registrationSteps as steps } from "@/lib/content/registration-steps";
 
 export function HowItWorks() {
   return (
@@ -34,12 +12,20 @@ export function HowItWorks() {
             How to join Jovia
           </h2>
           <p className="mt-4 max-w-md text-muted">
-            Creating a Jovia account takes less than a minute — here&apos;s
+            Creating a Jovia account takes less than two minutes — here&apos;s
             exactly what happens when you join.
           </p>
-          <ButtonLink href="/signup" variant="ghost" className="mt-7">
-            Join us now
-          </ButtonLink>
+          <div className="mt-7 flex flex-wrap items-center gap-5">
+            <ButtonLink href="/signup" variant="ghost">
+              Join us now
+            </ButtonLink>
+            <a
+              href="/how-to-register"
+              className="text-sm font-semibold text-gold-400 hover:underline"
+            >
+              Read the full registration guide
+            </a>
+          </div>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">

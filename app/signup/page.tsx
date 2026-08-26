@@ -4,8 +4,19 @@ import { PageHeader } from "@/components/PageHeader";
 import { SignupBenefits } from "@/components/auth/SignupBenefits";
 import { SignupForm } from "@/components/auth/SignupForm";
 import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Sign up — Jovia Network" };
+const title = "Sign Up for Jovia";
+const description =
+  "Create your Jovia account in under two minutes and start earning across four membership reward tiers.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: { canonical: "/signup" },
+  openGraph: { title, description, url: "/signup" },
+};
 
 export default function SignupPage() {
   return (
@@ -24,6 +35,13 @@ export default function SignupPage() {
         </div>
       </main>
       <Footer />
+      <JsonLd
+        id="signup-breadcrumb-jsonld"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Sign Up", path: "/signup" },
+        ])}
+      />
     </>
   );
 }

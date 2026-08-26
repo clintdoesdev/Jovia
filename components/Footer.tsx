@@ -1,10 +1,12 @@
 import { FaInstagram, FaXTwitter, FaFacebookF } from "react-icons/fa6";
 import { Logo } from "@/components/Logo";
+import { siteConfig } from "@/lib/site-config";
 
 const jovieLinks = [
   { href: "/", label: "Landing page" },
-  { href: "/#how-it-works", label: "How it works" },
-  { href: "/#tiers", label: "Membership tiers" },
+  { href: "/jovia-platform", label: "Jovia platform" },
+  { href: "/jovia-app", label: "Jovia app" },
+  { href: "/how-to-register", label: "How to register" },
   { href: "/signup", label: "Sign up" },
 ];
 
@@ -26,8 +28,7 @@ export function Footer() {
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-soft">
-            The official Jovia Network website — a membership platform where
-            every second creates value.
+            {siteConfig.description}
           </p>
           <div className="mt-5 flex gap-3">
             {socials.map((s) => (

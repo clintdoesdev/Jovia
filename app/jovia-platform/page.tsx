@@ -5,6 +5,8 @@ import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
+import { Reveal } from "@/components/motion/Reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { platformFeatures } from "@/lib/content/features";
 import { registrationSteps } from "@/lib/content/registration-steps";
 import { platformFaqs } from "@/lib/content/platform-faq";
@@ -44,7 +46,7 @@ export default function JoviaPlatformPage() {
         />
 
         <section className="px-6 py-20">
-          <div className="mx-auto max-w-3xl">
+          <Reveal className="mx-auto max-w-3xl">
             <h2 className="text-2xl font-bold text-foreground">What is the Jovia platform?</h2>
             <p className="mt-4 text-muted">
               The Jovia platform is the single account behind Jovia Network.
@@ -57,20 +59,22 @@ export default function JoviaPlatformPage() {
               active should be rewarded, and that reward should always be
               easy to see and track.
             </p>
-          </div>
+          </Reveal>
         </section>
 
         <section className="px-6 py-20">
           <div className="mx-auto max-w-6xl">
-            <SectionHeading
-              badge="PLATFORM FEATURES"
-              title="Everything included on the Jovia platform"
-            />
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <Reveal>
+              <SectionHeading
+                badge="PLATFORM FEATURES"
+                title="Everything included on the Jovia platform"
+              />
+            </Reveal>
+            <StaggerGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {platformFeatures.map((feature) => (
-                <div
+                <StaggerItem
                   key={feature.title}
-                  className="rounded-2xl border border-border bg-surface p-7"
+                  className="rounded-2xl border border-border bg-surface p-7 transition duration-300 hover:-translate-y-1 hover:border-violet-500/50"
                 >
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold-500/10 text-gold-400">
                     <feature.icon size={20} strokeWidth={2} />
@@ -79,20 +83,22 @@ export default function JoviaPlatformPage() {
                     {feature.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{feature.body}</p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
           </div>
         </section>
 
         <section className="px-6 py-20">
           <div className="mx-auto max-w-4xl">
-            <h2 className="text-2xl font-bold text-foreground">How the Jovia platform works</h2>
-            <div className="mt-8 space-y-4">
+            <Reveal>
+              <h2 className="text-2xl font-bold text-foreground">How the Jovia platform works</h2>
+            </Reveal>
+            <StaggerGroup className="mt-8 space-y-4">
               {registrationSteps.map((step) => (
-                <div
+                <StaggerItem
                   key={step.n}
-                  className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-5"
+                  className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 transition duration-300 hover:-translate-y-1 hover:border-violet-500/40"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold-500/10 text-sm font-extrabold text-gold-400">
                     {step.n}
@@ -101,36 +107,40 @@ export default function JoviaPlatformPage() {
                     <h3 className="text-sm font-semibold text-foreground">{step.title}</h3>
                     <p className="mt-1 text-sm text-muted">{step.body}</p>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <ButtonLink href="/signup" variant="cta">
-                Join the Jovia platform
-              </ButtonLink>
-              <a href="/jovia-app" className="text-sm font-semibold text-gold-400 hover:underline">
-                Looking to use Jovia on your phone? See the Jovia app.
-              </a>
-            </div>
+            <Reveal delay={0.15}>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <ButtonLink href="/signup" variant="cta">
+                  Join the Jovia platform
+                </ButtonLink>
+                <a href="/jovia-app" className="text-sm font-semibold text-gold-400 hover:underline">
+                  Looking to use Jovia on your phone? See the Jovia app.
+                </a>
+              </div>
+            </Reveal>
           </div>
         </section>
 
         <section id="platform-faq" className="px-6 py-20">
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-center text-2xl font-bold text-foreground sm:text-3xl">
-              Jovia platform FAQ
-            </h2>
-            <div className="mt-10 divide-y divide-border-soft rounded-2xl border border-border bg-surface">
+            <Reveal>
+              <h2 className="text-center text-2xl font-bold text-foreground sm:text-3xl">
+                Jovia platform FAQ
+              </h2>
+            </Reveal>
+            <StaggerGroup className="mt-10 divide-y divide-border-soft rounded-2xl border border-border bg-surface">
               {platformFaqs.map((item) => (
-                <div key={item.q} className="p-6">
+                <StaggerItem key={item.q} className="p-6">
                   <h3 className="text-sm font-semibold text-foreground sm:text-base">
                     {item.q}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{item.a}</p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
           </div>
         </section>
       </main>

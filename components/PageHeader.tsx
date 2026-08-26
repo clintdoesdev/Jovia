@@ -18,7 +18,11 @@ export function PageHeader({
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-banner)]"
       />
-      <div className="relative mx-auto max-w-6xl">
+      <div
+        aria-hidden
+        className="glow-orb pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-violet-500/20 blur-3xl"
+      />
+      <div className="relative mx-auto max-w-6xl animate-fade-up">
         <p className="text-sm text-muted-soft">
           <Link href="/" className="hover:text-foreground">
             Home

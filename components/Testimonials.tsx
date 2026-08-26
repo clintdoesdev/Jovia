@@ -1,5 +1,7 @@
 import { Star } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/motion/Reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 
 const testimonials = [
   {
@@ -36,11 +38,16 @@ export function Testimonials() {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading badge="MEMBER VOICES" title="People earning with Jovia" />
+        <Reveal>
+          <SectionHeading badge="MEMBER VOICES" title="People earning with Jovia" />
+        </Reveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-3">
+        <StaggerGroup className="mt-14 grid gap-5 sm:grid-cols-3">
           {testimonials.map((t) => (
-            <div key={t.name} className="rounded-2xl border border-border bg-surface p-6">
+            <StaggerItem
+              key={t.name}
+              className="rounded-2xl border border-border bg-surface p-6 transition duration-300 hover:-translate-y-1 hover:border-violet-500/40"
+            >
               <Stars />
               <p className="mt-4 text-sm leading-relaxed text-muted">&ldquo;{t.quote}&rdquo;</p>
               <div className="mt-6 flex items-center gap-3">
@@ -55,13 +62,15 @@ export function Testimonials() {
                   <p className="text-xs text-muted-soft">{t.role}</p>
                 </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
 
-        <p className="mt-6 text-center text-xs text-muted-soft">
-          Placeholder testimonials — replace with real member quotes.
-        </p>
+        <Reveal delay={0.1}>
+          <p className="mt-6 text-center text-xs text-muted-soft">
+            Placeholder testimonials — replace with real member quotes.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

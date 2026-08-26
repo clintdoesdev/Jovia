@@ -1,5 +1,7 @@
 import { Activity, Sparkles } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/motion/Reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 
 const points = [
   {
@@ -18,22 +20,24 @@ export function IntroSection() {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          badge="WHO WE ARE"
-          title={
-            <>
-              Jovia connects activity to value —
-              <br className="hidden sm:block" /> and pays you for it
-            </>
-          }
-          description="The Jovia website is the official home of Jovia Network — a membership platform built to turn consistent, everyday engagement into real, tracked rewards."
-        />
+        <Reveal>
+          <SectionHeading
+            badge="WHO WE ARE"
+            title={
+              <>
+                Jovia connects activity to value —
+                <br className="hidden sm:block" /> and pays you for it
+              </>
+            }
+            description="The Jovia website is the official home of Jovia Network — a membership platform built to turn consistent, everyday engagement into real, tracked rewards."
+          />
+        </Reveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2">
+        <StaggerGroup className="mt-14 grid gap-5 sm:grid-cols-2">
           {points.map((point) => (
-            <div
+            <StaggerItem
               key={point.title}
-              className="rounded-2xl border border-border bg-surface p-8"
+              className="rounded-2xl border border-border bg-surface p-8 transition duration-300 hover:-translate-y-1 hover:border-violet-500/40"
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold-500/10 text-gold-400">
                 <point.icon size={20} strokeWidth={2} />
@@ -42,14 +46,16 @@ export function IntroSection() {
                 {point.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{point.body}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
 
-        <p className="mx-auto mt-14 max-w-2xl text-center text-sm text-muted-soft">
-          Our vision is simple: turn everyday moments into measurable value —
-          and build a network that rewards showing up.
-        </p>
+        <Reveal delay={0.1}>
+          <p className="mx-auto mt-14 max-w-2xl text-center text-sm text-muted-soft">
+            Our vision is simple: turn everyday moments into measurable value
+            — and build a network that rewards showing up.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

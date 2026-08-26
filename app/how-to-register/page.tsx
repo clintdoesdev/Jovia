@@ -4,6 +4,8 @@ import { PageHeader } from "@/components/PageHeader";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { ButtonLink } from "@/components/ui/Button";
+import { Reveal } from "@/components/motion/Reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { breadcrumbJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import { registrationSteps } from "@/lib/content/registration-steps";
@@ -47,12 +49,13 @@ export default function HowToRegisterPage() {
         />
 
         <div className="mx-auto max-w-4xl px-6 py-16">
-          <ol className="space-y-5">
+          <StaggerGroup as="ol" className="space-y-5">
             {registrationSteps.map((step, index) => (
-              <li
+              <StaggerItem
                 key={step.n}
+                as="li"
                 id={`step-${index + 1}`}
-                className="flex gap-5 rounded-2xl border border-border bg-surface p-6"
+                className="flex gap-5 rounded-2xl border border-border bg-surface p-6 transition duration-300 hover:-translate-y-1 hover:border-violet-500/40"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold-500/10 text-lg font-extrabold text-gold-400">
                   {step.n}
@@ -61,18 +64,20 @@ export default function HowToRegisterPage() {
                   <h2 className="text-base font-semibold text-foreground">{step.title}</h2>
                   <p className="mt-1.5 text-sm leading-relaxed text-muted">{step.body}</p>
                 </div>
-              </li>
+              </StaggerItem>
             ))}
-          </ol>
+          </StaggerGroup>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <ButtonLink href="/signup" variant="cta">
-              Join us now
-            </ButtonLink>
-            <a href="/jovia-platform" className="text-sm font-semibold text-gold-400 hover:underline">
-              See what the Jovia platform includes
-            </a>
-          </div>
+          <Reveal delay={0.15}>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <ButtonLink href="/signup" variant="cta">
+                Join us now
+              </ButtonLink>
+              <a href="/jovia-platform" className="text-sm font-semibold text-gold-400 hover:underline">
+                See what the Jovia platform includes
+              </a>
+            </div>
+          </Reveal>
         </div>
       </main>
       <Footer />

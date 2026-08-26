@@ -5,6 +5,7 @@ import { SignupBenefits } from "@/components/auth/SignupBenefits";
 import { SignupForm } from "@/components/auth/SignupForm";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { Reveal } from "@/components/motion/Reveal";
 import { breadcrumbJsonLd } from "@/lib/seo";
 
 const title = "Sign Up for Jovia";
@@ -30,8 +31,12 @@ export default function SignupPage() {
           description="Enter your details below to create your Jovia account. It takes less than two minutes."
         />
         <div className="mx-auto grid max-w-6xl gap-6 px-6 py-16 lg:grid-cols-2">
-          <SignupBenefits />
-          <SignupForm />
+          <Reveal>
+            <SignupBenefits />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <SignupForm />
+          </Reveal>
         </div>
       </main>
       <Footer />

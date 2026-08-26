@@ -19,7 +19,16 @@ export function AuthSplitLayout({
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-banner)]"
         />
-        <div className="relative">
+        <div
+          aria-hidden
+          className="glow-orb pointer-events-none absolute -left-16 top-0 h-64 w-64 rounded-full bg-violet-500/25 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="glow-orb pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-gold-500/15 blur-3xl"
+          style={{ animationDelay: "1.5s" }}
+        />
+        <div className="relative animate-fade-up">
           <Logo />
           <div className="mt-14">
             <Badge>{badge}</Badge>
@@ -35,7 +44,9 @@ export function AuthSplitLayout({
       </div>
 
       <div className="flex flex-1 items-center justify-center bg-ink px-6 py-14">
-        <div className="w-full max-w-sm">{children}</div>
+        <div className="w-full max-w-sm animate-fade-up" style={{ animationDelay: "0.15s" }}>
+          {children}
+        </div>
       </div>
     </div>
   );

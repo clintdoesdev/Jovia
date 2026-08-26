@@ -1,6 +1,8 @@
 import { membershipTiers } from "@/lib/config/tiers";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
+import { Reveal } from "@/components/motion/Reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 
 export function TiersSection() {
   return (
@@ -11,33 +13,35 @@ export function TiersSection() {
       />
 
       <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-        <div>
-          <Badge>MEMBERSHIP</Badge>
-          <h2 className="mt-4 text-3xl font-bold text-foreground sm:text-4xl">
-            Tiers built to grow with you
-          </h2>
-          <p className="mt-4 max-w-md text-muted">
-            Every Jovia membership unlocks the same core rewards. Placeholder
-            tier structure — the amounts and durations mirror the brand
-            reference and are meant to be replaced with real numbers.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <ButtonLink href="/signup" variant="cta">
-              Join us now
-            </ButtonLink>
-            <ButtonLink href="/#faq" variant="ghost">
-              View FAQ
-            </ButtonLink>
+        <Reveal>
+          <div>
+            <Badge>MEMBERSHIP</Badge>
+            <h2 className="mt-4 text-3xl font-bold text-foreground sm:text-4xl">
+              Tiers built to grow with you
+            </h2>
+            <p className="mt-4 max-w-md text-muted">
+              Every Jovia membership unlocks the same core rewards. Placeholder
+              tier structure — the amounts and durations mirror the brand
+              reference and are meant to be replaced with real numbers.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <ButtonLink href="/signup" variant="cta">
+                Join us now
+              </ButtonLink>
+              <ButtonLink href="/#faq" variant="ghost">
+                View FAQ
+              </ButtonLink>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <StaggerGroup className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {membershipTiers.map((tier, i) => {
             const highlighted = i === 2;
             return (
-              <div
+              <StaggerItem
                 key={tier.id}
-                className={`flex flex-col items-center gap-2 rounded-2xl border px-4 py-8 text-center backdrop-blur-sm ${
+                className={`flex flex-col items-center gap-2 rounded-2xl border px-4 py-8 text-center backdrop-blur-sm transition duration-300 hover:-translate-y-1 ${
                   highlighted
                     ? "border-gold-500/60 bg-ink/60 shadow-[0_0_40px_-12px_rgba(238,171,14,0.55)]"
                     : "border-white/10 bg-ink/40"
@@ -52,10 +56,10 @@ export function TiersSection() {
                 <span className="text-xs font-medium text-muted">
                   every {tier.duration.toLowerCase()}
                 </span>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

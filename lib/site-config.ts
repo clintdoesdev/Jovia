@@ -6,7 +6,7 @@ export const siteConfig = {
   // paragraph on every page — keep the phrase "official Jovia website" in
   // here, it's the single highest-value phrase to protect.
   description:
-    "The official Jovia website — home of Jovia Network, a membership platform where staying active keeps paying off across four reward tiers.",
+    "The official Jovia website — home of Jovia Network, a membership platform with four reward tiers and weekly Friday Bonus Rewards (FBR).",
   ogImage: "/og-image.jpg",
   keywords: [
     "Jovia",
@@ -20,6 +20,8 @@ export const siteConfig = {
     "Jovia login",
     "Jovia membership",
     "Jovia rewards",
+    "Jovia Friday Bonus Rewards",
+    "Jovia FBR",
   ],
   links: {
     signUp: "/signup",

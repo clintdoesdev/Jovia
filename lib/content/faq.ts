@@ -9,7 +9,11 @@ export const homeFaqs = [
   },
   {
     q: "Is this the official Jovia website?",
-    a: "Yes. This is the official Jovia website — home to Jovia Network's membership, reward tiers, sign-up, and everything else Jovia provides.",
+    a: "Yes. This is the official Jovia website — home to Jovia Network's membership, reward tiers, Friday Bonus Rewards, sign-up, and everything else Jovia provides.",
+  },
+  {
+    q: "What is Friday Bonus Rewards (FBR)?",
+    a: "Friday Bonus Rewards is a weekly bonus for members. A random number appears on your screen every Friday — tap it fast to claim a $10 reward and withdraw instantly. Winners are featured on official Jovia celebration flyers, and monthly validity applies.",
   },
   {
     q: "How do I join?",

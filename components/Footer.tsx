@@ -6,6 +6,7 @@ const jovieLinks = [
   { href: "/", label: "Landing page" },
   { href: "/jovia-platform", label: "Jovia platform" },
   { href: "/jovia-app", label: "Jovia app" },
+  { href: "/#friday-bonus-rewards", label: "Friday Bonus Rewards" },
   { href: "/how-to-register", label: "How to register" },
   { href: "/signup", label: "Sign up" },
 ];

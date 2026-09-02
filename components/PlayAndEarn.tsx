@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
-import { LiquidGlass } from "@/components/LiquidGlass";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { playSteps, playNote } from "@/lib/content/play-and-earn";
@@ -11,9 +11,12 @@ export function PlayAndEarn() {
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <Reveal>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-border shadow-[0_30px_80px_-30px_rgba(168,85,247,0.5)]">
-            <LiquidGlass
+            <Image
               src="/brand/carousel/play-earn.jpg"
-              alt="Jovia member earning by playing games on a handheld console"
+              alt="Earn up to $20 daily playing games, rewarded by gameplay time"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 384px, 90vw"
             />
           </div>
         </Reveal>

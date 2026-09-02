@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
-import { LiquidGlass } from "@/components/LiquidGlass";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { watchCategories, watchSteps, watchExamples } from "@/lib/content/watch-and-earn";
@@ -67,9 +67,12 @@ export function WatchAndEarn() {
 
         <Reveal delay={0.1} className="order-1 lg:order-2">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-border shadow-[0_30px_80px_-30px_rgba(238,171,14,0.4)]">
-            <LiquidGlass
+            <Image
               src="/brand/carousel/watch-earn.jpg"
-              alt="Jovia member earning by watching videos on her phone"
+              alt="Earn up to $12 daily watching videos across content creator, music, AI, dance, and comedy categories"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 384px, 90vw"
             />
           </div>
         </Reveal>

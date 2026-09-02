@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
+import { LiquidGlassOrb } from "@/components/LiquidGlassOrb";
 
 const stats = [
   { value: "$2–$12", label: "Reward range per session" },
@@ -26,19 +27,12 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent)]"
       />
 
-      {/* Ambient drifting orbs */}
-      <motion.div
-        aria-hidden
-        className="glow-orb pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-violet-500/25 blur-3xl"
-        animate={reduce ? undefined : { x: [0, 30, 0], y: [0, 20, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="glow-orb pointer-events-none absolute right-0 top-40 h-80 w-80 rounded-full bg-gold-500/15 blur-3xl"
-        animate={reduce ? undefined : { x: [0, -24, 0], y: [0, -16, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      />
+      {/* Ambient liquid glass: droplets that wander, merge, and separate
+          behind the image card, clear of the readable text column — see
+          components/LiquidGlassOrb.tsx. */}
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[46%] lg:block">
+        <LiquidGlassOrb />
+      </div>
 
       <StaggerGroup className="relative mx-auto grid max-w-6xl gap-14 px-6 pt-16 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pt-24 lg:pb-24">
         <div>

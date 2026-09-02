@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
+import { LiquidGlassShowcase } from "@/components/LiquidGlassShowcase";
 import { ShowcaseCarousel } from "@/components/ShowcaseCarousel";
 import { FridayBonusSection } from "@/components/FridayBonusSection";
 import { IntroSection } from "@/components/IntroSection";
@@ -39,6 +40,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Marquee />
+        <LiquidGlassShowcase />
         <ShowcaseCarousel />
         <FridayBonusSection />
         <IntroSection />

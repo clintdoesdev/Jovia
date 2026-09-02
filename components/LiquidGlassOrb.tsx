@@ -23,7 +23,7 @@ out vec4 outColor;
 uniform float uTime;
 uniform vec2 uResolution;
 
-#define DROPLETS 4
+#define DROPLETS 5
 
 float smin(float a, float b, float k) {
   float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
@@ -35,14 +35,14 @@ vec2 dropletCenter(int i, float t, vec2 res) {
   float speed = 0.12 + fi * 0.035;
   float px = sin(t * speed + fi * 2.1) * 0.5 + cos(t * speed * 0.6 + fi) * 0.22;
   float py = cos(t * speed * 0.8 + fi * 1.7) * 0.5 + sin(t * speed * 0.5 + fi * 3.0) * 0.2;
-  // Biased toward the right/outer margin so droplets wander clear of the
-  // hero image card that sits centered in front of this canvas.
-  return res * vec2(0.7, 0.5) + vec2(px, py) * res * vec2(0.26, 0.34);
+  // This canvas is a short, wide dedicated band with nothing drawn in
+  // front of it, so droplets can roam its full width freely.
+  return res * 0.5 + vec2(px, py) * res * vec2(0.4, 0.32);
 }
 
 float dropletRadius(int i, float t) {
   float fi = float(i);
-  float base = min(uResolution.x, uResolution.y) * (0.1 + 0.016 * mod(fi, 3.0));
+  float base = min(uResolution.x, uResolution.y) * (0.24 + 0.03 * mod(fi, 3.0));
   return base * (1.0 + 0.08 * sin(t * 0.9 + fi * 1.3));
 }
 

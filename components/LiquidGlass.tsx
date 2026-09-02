@@ -20,39 +20,80 @@ uniform float uTime;
 uniform vec2 uResolution;
 uniform vec2 uImageSize;
 
+// Signed distance to a rounded box centered at the origin.
+float sdRoundBox(vec2 p, vec2 b, float r) {
+  vec2 q = abs(p) - b + r;
+  return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
+}
+
 void main() {
-  vec2 uv = vUv;
+  vec2 res = uResolution;
+  vec2 fragCoord = vUv * res;
 
   // Cover-fit the image inside the canvas so it isn't stretched.
-  float canvasAspect = uResolution.x / uResolution.y;
+  float canvasAspect = res.x / res.y;
   float imageAspect = uImageSize.x / uImageSize.y;
   vec2 scale = canvasAspect > imageAspect
     ? vec2(imageAspect / canvasAspect, 1.0)
     : vec2(1.0, canvasAspect / imageAspect);
-  vec2 cuv = (uv - 0.5) * scale + 0.5;
+  vec2 cuv = (vUv - 0.5) * scale + 0.5;
+  vec3 bg = texture(uTexture, cuv).rgb;
 
-  // Liquid distortion: layered sine waves drifting over time.
-  float t = uTime * 0.35;
-  float wave1 = sin(cuv.y * 8.0 + t * 1.3) * 0.012;
-  float wave2 = sin(cuv.x * 6.0 - t * 1.7) * 0.012;
-  float wave3 = sin((cuv.x + cuv.y) * 10.0 + t * 2.1) * 0.008;
-  vec2 distorted = cuv + vec2(wave1 + wave3, wave2 - wave3);
+  // A glass panel sized to the image itself gently hovers in place,
+  // refracting the sharp photo beneath it — strongest at its own rim.
+  float minDim = min(res.x, res.y);
+  vec2 glassHalf = res * 0.5 * 0.94;
+  float cornerR = minDim * 0.12;
 
-  // Slight chromatic separation for a glassy refraction feel.
-  float rOff = 0.0025 * sin(t * 1.9 + cuv.y * 4.0);
-  float bOff = 0.0025 * cos(t * 2.3 + cuv.x * 4.0);
+  float t = uTime * 0.9;
+  vec2 center = res * 0.5 + vec2(0.0, sin(t) * minDim * 0.018);
 
-  float r = texture(uTexture, distorted + vec2(rOff, 0.0)).r;
-  float g = texture(uTexture, distorted).g;
-  float b = texture(uTexture, distorted - vec2(bOff, 0.0)).b;
-  vec3 color = vec3(r, g, b);
+  vec2 p = fragCoord - center;
+  float d = sdRoundBox(p, glassHalf, cornerR);
 
-  // Subtle sheen sweeping across the surface, like light on glass.
-  float sheen = smoothstep(0.0, 1.0, sin((cuv.x + cuv.y) * 3.0 - t * 1.1) * 0.5 + 0.5);
-  color += sheen * 0.05;
+  float aa = 2.5;
+  float inGlass = 1.0 - smoothstep(-aa, aa, d);
 
-  float inBounds = step(0.0, distorted.x) * step(distorted.x, 1.0) * step(0.0, distorted.y) * step(distorted.y, 1.0);
-  outColor = vec4(color * inBounds, 1.0);
+  // Refraction: bends more sharply near the rim, like a real lens.
+  vec2 pn = p / glassHalf;
+  float rNorm = clamp(length(pn), 0.0, 1.4);
+  float bulge = smoothstep(0.0, 1.0, rNorm);
+  vec2 dir = length(p) > 0.0001 ? normalize(p) : vec2(0.0);
+  float maxDispPx = minDim * 0.055;
+  vec2 dispUv = (dir * bulge * maxDispPx) / res * scale;
+
+  float chroma = 0.006 * bulge;
+  vec3 refracted = vec3(
+    texture(uTexture, cuv - dispUv + vec2(chroma, 0.0)).r,
+    texture(uTexture, cuv - dispUv).g,
+    texture(uTexture, cuv - dispUv - vec2(chroma, 0.0)).b
+  );
+
+  // Light blur inside the glass for a frosted feel.
+  vec2 texel = (1.0 / res) * scale * 2.0;
+  vec3 blurred = refracted
+    + texture(uTexture, cuv - dispUv + texel * vec2(1.0, 0.0)).rgb
+    + texture(uTexture, cuv - dispUv - texel * vec2(1.0, 0.0)).rgb
+    + texture(uTexture, cuv - dispUv + texel * vec2(0.0, 1.0)).rgb
+    + texture(uTexture, cuv - dispUv - texel * vec2(0.0, 1.0)).rgb;
+  blurred *= 0.2;
+
+  vec3 glassColor = mix(blurred, vec3(1.0), 0.1) * 1.04;
+
+  // Specular highlight biased toward the top-left, like light on glass.
+  vec2 lightDir = normalize(vec2(-0.6, -0.8));
+  float spec = pow(max(0.0, dot(pn, -lightDir)), 3.0) * (1.0 - rNorm * 0.5);
+  glassColor += spec * 0.35;
+
+  // Bright rim at the glass boundary.
+  float rim = 1.0 - smoothstep(0.0, aa * 3.0, abs(d));
+  glassColor += rim * 0.5;
+
+  // Soft drop shadow cast just outside the glass edge.
+  float shadow = smoothstep(24.0, 0.0, d) * step(0.0, d);
+  vec3 shadowed = bg * (1.0 - shadow * 0.35);
+
+  outColor = vec4(mix(shadowed, glassColor, inGlass), 1.0);
 }`;
 
 function compileShader(gl: WebGL2RenderingContext, type: number, source: string) {
@@ -68,10 +109,13 @@ function compileShader(gl: WebGL2RenderingContext, type: number, source: string)
 }
 
 /**
- * Renders `src` into a WebGL2 canvas with an animated liquid-glass
- * distortion (layered sine-wave UV warp + light chromatic separation).
- * Falls back to a plain <img> if WebGL2 or shader compilation fails, and
- * freezes on a single frame under prefers-reduced-motion.
+ * Renders `src` sharp into a WebGL2 canvas, with a "liquid glass" panel
+ * sized to the image itself sitting on top — refracting, blurring, and
+ * lighting the sharp photo beneath it (strongest near its own rim),
+ * gently hovering rather than sliding around (Apple-style Liquid Glass,
+ * not a full-image warp). Falls back to a plain <img> if WebGL2 or
+ * shader compilation fails, and freezes the hover under
+ * prefers-reduced-motion.
  */
 export function LiquidGlass({
   src,

@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
+import { ShowcaseCarousel } from "@/components/ShowcaseCarousel";
 import { FridayBonusSection } from "@/components/FridayBonusSection";
 import { IntroSection } from "@/components/IntroSection";
+import { WatchAndEarn } from "@/components/WatchAndEarn";
+import { PlayAndEarn } from "@/components/PlayAndEarn";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
-import { FeatureGrid } from "@/components/FeatureGrid";
 import { HowItWorks } from "@/components/HowItWorks";
 import { TiersSection } from "@/components/TiersSection";
 import { Testimonials } from "@/components/Testimonials";
@@ -17,7 +19,7 @@ import { faqJsonLd } from "@/lib/seo";
 
 const title = "Jovia Website | Official Home of Jovia Network";
 const description =
-  "Welcome to the official Jovia website — home of Jovia Network, a membership platform with four reward tiers and weekly Friday Bonus Rewards (FBR).";
+  "Welcome to the official Jovia website — home of Jovia Network. Watch videos, play games, and earn every second, plus weekly Friday Bonus Rewards (FBR).";
 
 export const metadata: Metadata = {
   title,
@@ -37,10 +39,12 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Marquee />
+        <ShowcaseCarousel />
         <FridayBonusSection />
         <IntroSection />
+        <WatchAndEarn />
+        <PlayAndEarn />
         <WhyChooseUs />
-        <FeatureGrid />
         <HowItWorks />
         <TiersSection />
         <Testimonials />

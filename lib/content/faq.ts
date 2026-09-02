@@ -5,11 +5,15 @@
 export const homeFaqs = [
   {
     q: "What is Jovia Network?",
-    a: "Jovia is a membership platform. This is placeholder copy — replace it with Jovia's real value proposition when it's ready.",
+    a: "Jovia is a multinational intelligent networking platform that helps users earn for the time they spend through networking, digital skills, entertainment, and engaging activities. Jovia stands for Just One Vision: Intelligent Advancement.",
   },
   {
     q: "Is this the official Jovia website?",
     a: "Yes. This is the official Jovia website — home to Jovia Network's membership, reward tiers, Friday Bonus Rewards, sign-up, and everything else Jovia provides.",
+  },
+  {
+    q: "How do I earn on Jovia?",
+    a: "Set a countdown timer for an activity — watching videos or playing games — and earn money every second while it runs. Watch and earn up to $12 daily; play games and earn up to $20 daily.",
   },
   {
     q: "What is Friday Bonus Rewards (FBR)?",
@@ -25,6 +29,6 @@ export const homeFaqs = [
   },
   {
     q: "How are reward tiers calculated?",
-    a: "Placeholder mechanic — the amounts and durations shown across the site mirror the brand reference and will be replaced with the real reward logic.",
+    a: "For video sessions, 1 second is worth $0.01 — so 20 seconds earns $2 and 2 minutes earns $12. Game sessions are rewarded based on gameplay time, win or lose.",
   },
 ] as const;

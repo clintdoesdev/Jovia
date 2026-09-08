@@ -7,8 +7,8 @@ import { ButtonLink } from "@/components/ui/Button";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 
 const stats = [
-  { value: "$2–$12", label: "Reward range per session" },
-  { value: "Free", label: "To join, no card required" },
+  { value: "₦9K–₦15K", label: "Silver & Gold package access fee" },
+  { value: "₦50–₦100", label: "Earned per second, by package" },
   { value: "24/7", label: "Member access" },
 ];
 

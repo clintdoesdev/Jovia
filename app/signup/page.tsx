@@ -10,7 +10,7 @@ import { breadcrumbJsonLd } from "@/lib/seo";
 
 const title = "Sign Up for Jovia";
 const description =
-  "Create your Jovia account in under two minutes and start earning across four membership reward tiers.";
+  "Create your Jovia account in under two minutes, then activate the Silver (₦9,000) or Gold (₦15,000) package to start earning.";
 
 export const metadata: Metadata = {
   title,

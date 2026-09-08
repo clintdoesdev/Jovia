@@ -6,7 +6,7 @@ export const siteConfig = {
   // paragraph on every page — keep the phrase "official Jovia website" in
   // here, it's the single highest-value phrase to protect.
   description:
-    "The official Jovia website — home of Jovia Network, an intelligent networking platform where you watch videos, play games, and earn every second, plus weekly Friday Bonus Rewards (FBR).",
+    "The official Jovia website — home of Jovia Network. Choose the Silver (₦9,000) or Gold (₦15,000) membership package, watch videos, play games, and earn every second.",
   ogImage: "/og-image.jpg",
   keywords: [
     "Jovia",
@@ -20,6 +20,13 @@ export const siteConfig = {
     "Jovia login",
     "Jovia membership",
     "Jovia rewards",
+    "Jovia pricing",
+    "Jovia packages",
+    "Jovia Silver",
+    "Jovia Gold",
+    "Jovia Silver package",
+    "Jovia Gold package",
+    "Jovia access fee",
     "Jovia Friday Bonus Rewards",
     "Jovia FBR",
     "Jovia watch and earn",

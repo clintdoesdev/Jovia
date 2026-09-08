@@ -15,7 +15,7 @@ import { siteConfig } from "@/lib/site-config";
 
 const title = "The Jovia Platform: One Account, Ever More Ways to Earn";
 const description =
-  "The Jovia platform brings account creation, active-session rewards, and four membership reward tiers together in one place.";
+  "The Jovia platform brings account creation, active-session rewards, and the Silver and Gold membership packages together in one place.";
 
 export const metadata: Metadata = {
   title,

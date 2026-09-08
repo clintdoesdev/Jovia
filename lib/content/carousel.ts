@@ -26,9 +26,9 @@ export const carouselCards: CarouselCard[] = [
     image: "/brand/carousel/watch-earn.jpg",
     alt: "Jovia member smiling while watching videos on her phone",
     eyebrow: "WATCH & EARN",
-    title: "Earn up to $12 daily watching videos",
+    title: "Earn up to ₦3,000 every 30 seconds watching videos",
     description:
-      "Content creator, music, AI, dance, and comedy videos — set a countdown and earn every second you watch.",
+      "₦3,000 on Gold, ₦1,500 on Silver — content creator, music, AI, dance, and comedy videos, every 30 seconds you watch.",
     cta: "See watch & earn",
     href: "/#watch-and-earn",
   },
@@ -37,9 +37,9 @@ export const carouselCards: CarouselCard[] = [
     image: "/brand/carousel/play-earn.jpg",
     alt: "Jovia member laughing while playing a game on a handheld console",
     eyebrow: "PLAY & EARN",
-    title: "Earn up to $20 daily playing games",
+    title: "Earn up to ₦6,000 every 60 seconds playing games",
     description:
-      "Win or lose, the system allocates rewards based on gameplay time — every session pays.",
+      "₦6,000 on Gold, ₦3,000 on Silver — win or lose, every 60 seconds of gameplay pays.",
     cta: "See play & earn",
     href: "/#play-and-earn",
   },
@@ -50,7 +50,7 @@ export const carouselCards: CarouselCard[] = [
     eyebrow: "FRIDAY BONUS REWARDS",
     title: "Win & withdraw $10 every Friday",
     description:
-      "A random number appears every Friday — tap fast to claim your $10 reward and withdraw instantly.",
+      "Exclusive to Jovia Gold — a random number appears every Friday, tap fast to claim your $10 reward and withdraw instantly.",
     cta: "See Friday Bonus Rewards",
     href: "/#friday-bonus-rewards",
   },

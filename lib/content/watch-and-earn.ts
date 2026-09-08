@@ -19,7 +19,8 @@ export const watchSteps = [
 ];
 
 export const watchExamples = [
-  { duration: "1 second", amount: "$0.01" },
-  { duration: "20 seconds", amount: "$2" },
-  { duration: "2 minutes", amount: "$12" },
+  { duration: "Silver: 1 second", amount: "₦50" },
+  { duration: "Silver: 20 seconds", amount: "₦1,000" },
+  { duration: "Gold: 1 second", amount: "₦100" },
+  { duration: "Gold: 20 seconds", amount: "₦2,000" },
 ] as const;

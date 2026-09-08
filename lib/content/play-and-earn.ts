@@ -10,4 +10,4 @@ export const playSteps = [
 ];
 
 export const playNote =
-  "Win or lose, the system allocates rewards based on gameplay time — Jovia generates revenue through ad partners, so every session pays.";
+  "The system allocates rewards based on gameplay time — Jovia generates revenue through ad partners, so every session pays.";

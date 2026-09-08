@@ -20,7 +20,7 @@ import { faqJsonLd } from "@/lib/seo";
 
 const title = "Jovia Website | Official Home of Jovia Network";
 const description =
-  "Welcome to the official Jovia website — home of Jovia Network. Watch videos, play games, and earn every second, plus weekly Friday Bonus Rewards (FBR).";
+  "Welcome to the official Jovia website — home of Jovia Network. Choose the Silver (₦9,000) or Gold (₦15,000) package, watch videos, play games, and earn every second.";
 
 export const metadata: Metadata = {
   title,

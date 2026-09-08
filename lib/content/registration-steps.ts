@@ -9,13 +9,13 @@ export const registrationSteps = [
   },
   {
     n: "02",
-    title: "Start a session",
-    body: "Activate a session whenever you're ready to start earning toward a reward tier.",
+    title: "Activate a package",
+    body: "Choose Jovia Silver (₦9,000) or Jovia Gold (₦15,000) to unlock your earning rate.",
   },
   {
     n: "03",
-    title: "Reach a tier",
-    body: "The longer an active session runs, the higher the reward tier you reach.",
+    title: "Start a session",
+    body: "Set a countdown timer and start earning every second it runs — Gold earns double the Silver rate.",
   },
   {
     n: "04",

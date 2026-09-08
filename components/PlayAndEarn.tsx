@@ -13,7 +13,7 @@ export function PlayAndEarn() {
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-border shadow-[0_30px_80px_-30px_rgba(168,85,247,0.5)]">
             <Image
               src="/brand/carousel/play-earn.jpg"
-              alt="Earn up to $20 daily playing games, rewarded by gameplay time"
+              alt="Earn up to ₦6,000 every 60 seconds playing games, win or lose"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 384px, 90vw"
@@ -24,10 +24,12 @@ export function PlayAndEarn() {
         <Reveal delay={0.1}>
           <Badge dot>PLAY &amp; EARN</Badge>
           <h2 className="mt-5 text-3xl font-extrabold leading-tight text-foreground sm:text-4xl">
-            Earn up to <span className="text-gradient-gold">$20 daily</span> playing
+            Earn up to <span className="text-gradient-gold">₦6,000 every 60 seconds</span> playing
             your favorite games
           </h2>
-          <p className="mt-4 max-w-md text-muted">{playNote}</p>
+          <p className="mt-4 max-w-md text-muted">
+            ₦6,000 on Jovia Gold, ₦3,000 on Jovia Silver — win or lose. {playNote}
+          </p>
 
           <StaggerGroup className="mt-8 space-y-3">
             {playSteps.map((step, i) => (

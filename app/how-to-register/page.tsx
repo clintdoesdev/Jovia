@@ -12,7 +12,7 @@ import { registrationSteps } from "@/lib/content/registration-steps";
 
 const title = "How to Register on Jovia (Step-by-Step Guide)";
 const description =
-  "A step-by-step guide to creating your Jovia account, starting a session, and reaching your first reward tier.";
+  "A step-by-step guide to creating your Jovia account, activating a Silver or Gold package, and starting your first session.";
 
 export const metadata: Metadata = {
   title,

@@ -12,12 +12,13 @@ export function WatchAndEarn() {
         <Reveal className="order-2 lg:order-1">
           <Badge dot>WATCH &amp; EARN</Badge>
           <h2 className="mt-5 text-3xl font-extrabold leading-tight text-foreground sm:text-4xl">
-            Earn up to <span className="text-gradient-gold">$12 daily</span> watching
+            Earn up to <span className="text-gradient-gold">₦3,000 every 30 seconds</span> watching
             your favorite videos
           </h2>
           <p className="mt-4 max-w-md text-muted">
-            Across categories: content creator videos, music videos, AI
-            videos, dance videos, comedy videos, and more.
+            ₦3,000 on Jovia Gold, ₦1,500 on Jovia Silver — across categories:
+            content creator videos, music videos, AI videos, dance videos,
+            comedy videos, and more.
           </p>
 
           <ul className="mt-6 flex flex-wrap gap-2">
@@ -69,7 +70,7 @@ export function WatchAndEarn() {
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-border shadow-[0_30px_80px_-30px_rgba(238,171,14,0.4)]">
             <Image
               src="/brand/carousel/watch-earn.jpg"
-              alt="Earn up to $12 daily watching videos across content creator, music, AI, dance, and comedy categories"
+              alt="Earn up to ₦3,000 every 30 seconds watching videos across content creator, music, AI, dance, and comedy categories"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 384px, 90vw"

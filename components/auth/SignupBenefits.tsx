@@ -1,8 +1,8 @@
 import { Check } from "lucide-react";
 
 const benefits = [
-  "Earn rewards across four membership tiers",
-  "Free to join, no card required",
+  "Two packages: Jovia Silver (₦9,000) or Jovia Gold (₦15,000)",
+  "Free account creation, activate a package anytime",
   "Track everything from your member dashboard",
   "Cancel or pause anytime",
 ];

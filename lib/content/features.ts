@@ -19,8 +19,8 @@ export const platformFeatures = [
   },
   {
     icon: Trophy,
-    title: "Tiered payouts",
-    body: "Four reward tiers scale with how long you stay active in a session — see Membership tiers below.",
+    title: "Package-based payouts",
+    body: "Silver and Gold packages set your per-second earning rate across every activity — see Membership packages below.",
   },
   {
     icon: GraduationCap,

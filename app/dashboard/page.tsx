@@ -4,7 +4,7 @@ import { getCurrentUser } from "@/lib/session";
 import { logoutAction } from "@/lib/actions/auth";
 import { Logo } from "@/components/Logo";
 import { Badge } from "@/components/ui/Badge";
-import { membershipTiers } from "@/lib/config/tiers";
+import { membershipPackages } from "@/lib/config/tiers";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
@@ -39,14 +39,19 @@ export default async function DashboardPage() {
           membership experience here.
         </p>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {membershipTiers.map((tier) => (
+        <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          {membershipPackages.map((pkg) => (
             <div
-              key={tier.id}
+              key={pkg.id}
               className="rounded-2xl border border-border bg-surface px-5 py-8 text-center"
             >
-              <span className="text-3xl font-extrabold text-money-500">{tier.amount}</span>
-              <p className="mt-1 text-sm text-muted">every {tier.duration.toLowerCase()}</p>
+              <p className="text-sm font-semibold text-foreground">{pkg.name}</p>
+              <span className="mt-2 block text-3xl font-extrabold text-money-500">
+                {pkg.accessFee}
+              </span>
+              <p className="mt-1 text-sm text-muted">
+                {pkg.perSecond}/sec · {pkg.per20Seconds} every 20 seconds
+              </p>
             </div>
           ))}
         </div>

@@ -27,8 +27,9 @@ export function FridayBonusSection() {
             <span className="text-gradient-gold">$10 every Friday</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted">
-            Every Friday is a chance to win and withdraw a $10 bonus reward —
-            on top of your regular Jovia earnings.
+            Exclusive to Jovia Gold members: every Friday is a chance to win
+            and withdraw a $10 bonus reward, on top of your regular Jovia
+            earnings.
           </p>
         </Reveal>
 

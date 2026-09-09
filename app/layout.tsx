@@ -68,8 +68,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/brand/icon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/brand/icon-192.png", type: "image/png", sizes: "192x192" },
       { url: "/icon.png", type: "image/png", sizes: "512x512" },
     ],
+    shortcut: ["/favicon.ico"],
     apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
   manifest: "/manifest.webmanifest",
@@ -90,8 +93,15 @@ const siteJsonLd = {
       "@type": "Organization",
       "@id": `${siteConfig.url}/#organization`,
       name: "Jovia",
+      alternateName: "Jovia Network",
       url: siteConfig.url,
-      logo: `${siteConfig.url}/brand/icon-512.png`,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/brand/icon-512.png`,
+        width: 512,
+        height: 512,
+      },
+      image: `${siteConfig.url}/brand/jovia-logo-lockup.png`,
       description: siteConfig.description,
     },
     {

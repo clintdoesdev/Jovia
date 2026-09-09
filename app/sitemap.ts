@@ -1,7 +1,15 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 
-const homeImages = ["/brand/hero-art.jpg", "/og-image.jpg"];
+const homeImages = [
+  "/brand/hero-art.jpg",
+  "/brand/carousel/welcome.jpg",
+  "/brand/carousel/watch-earn.jpg",
+  "/brand/carousel/play-earn.jpg",
+  "/brand/carousel/friday-bonus.jpg",
+  "/brand/carousel/why-choose-us.jpg",
+  "/og-image.jpg",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: {

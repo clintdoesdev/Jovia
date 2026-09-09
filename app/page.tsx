@@ -16,7 +16,8 @@ import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { homeFaqs } from "@/lib/content/faq";
-import { faqJsonLd } from "@/lib/seo";
+import { faqJsonLd, absoluteUrl } from "@/lib/seo";
+import { siteConfig } from "@/lib/site-config";
 
 const title = "Jovia Website | Official Home of Jovia Network";
 const description =
@@ -31,6 +32,31 @@ export const metadata: Metadata = {
     description,
     url: "/",
   },
+};
+
+const homeImages = [
+  { url: absoluteUrl("/brand/hero-art.jpg"), width: 1280, height: 1280 },
+  { url: absoluteUrl("/brand/carousel/welcome.jpg"), width: 800, height: 1000 },
+  { url: absoluteUrl("/brand/carousel/watch-earn.jpg"), width: 800, height: 1000 },
+  { url: absoluteUrl("/brand/carousel/play-earn.jpg"), width: 800, height: 1000 },
+  { url: absoluteUrl("/brand/carousel/friday-bonus.jpg"), width: 800, height: 1000 },
+  { url: absoluteUrl("/brand/carousel/why-choose-us.jpg"), width: 800, height: 1000 },
+];
+
+const webPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  description,
+  url: siteConfig.url,
+  isPartOf: { "@id": `${siteConfig.url}/#website` },
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    url: homeImages[0].url,
+    width: homeImages[0].width,
+    height: homeImages[0].height,
+  },
+  image: homeImages.map((img) => img.url),
 };
 
 export default function Home() {
@@ -53,6 +79,7 @@ export default function Home() {
         <Faq />
       </main>
       <Footer />
+      <JsonLd id="home-webpage-jsonld" data={webPageJsonLd} />
       <JsonLd id="home-faq-jsonld" data={faqJsonLd(homeFaqs.map((f) => ({ q: f.q, a: f.a })))} />
     </>
   );

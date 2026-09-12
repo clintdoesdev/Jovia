@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/signup" },
   openGraph: { title, description, url: "/signup" },
+  twitter: { title, description },
 };
 
 export default function SignupPage() {

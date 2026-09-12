@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/jovia-platform" },
   openGraph: { title, description, url: "/jovia-platform" },
+  twitter: { title, description },
 };
 
 const webPageJsonLd = {

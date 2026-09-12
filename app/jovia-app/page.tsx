@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/jovia-app" },
   openGraph: { title, description, url: "/jovia-app" },
+  twitter: { title, description },
 };
 
 const webAppJsonLd = {

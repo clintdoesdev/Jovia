@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
-import { LiquidGlassShowcase } from "@/components/LiquidGlassShowcase";
 import { ShowcaseCarousel } from "@/components/ShowcaseCarousel";
 import { FridayBonusSection } from "@/components/FridayBonusSection";
 import { IntroSection } from "@/components/IntroSection";
@@ -20,8 +19,7 @@ import { faqJsonLd, absoluteUrl } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 const title = "Jovia Website | Official Home of Jovia Network";
-const description =
-  "Welcome to the official Jovia website — home of Jovia Network. Choose the Silver (₦9,000) or Gold (₦15,000) package, watch videos, play games, and earn every second.";
+const description = siteConfig.description;
 
 export const metadata: Metadata = {
   title,
@@ -32,6 +30,7 @@ export const metadata: Metadata = {
     description,
     url: "/",
   },
+  twitter: { title, description },
 };
 
 const homeImages = [
@@ -66,7 +65,6 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Marquee />
-        <LiquidGlassShowcase />
         <ShowcaseCarousel />
         <FridayBonusSection />
         <IntroSection />

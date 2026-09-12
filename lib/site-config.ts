@@ -6,7 +6,7 @@ export const siteConfig = {
   // paragraph on every page — keep the phrase "official Jovia website" in
   // here, it's the single highest-value phrase to protect.
   description:
-    "The official Jovia website — home of Jovia Network. Choose the Silver (₦9,000) or Gold (₦15,000) membership package, watch videos, play games, and earn every second.",
+    "The official Jovia website — home of Jovia Network. Choose a Silver or Gold membership package, watch videos, play games, and earn every second.",
   ogImage: "/og-image.jpg",
   keywords: [
     "Jovia",

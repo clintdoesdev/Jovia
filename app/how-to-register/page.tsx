@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/how-to-register" },
   openGraph: { title, description, url: "/how-to-register" },
+  twitter: { title, description },
 };
 
 const howToJsonLd = {

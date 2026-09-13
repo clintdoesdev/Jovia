@@ -9,6 +9,8 @@ export type MembershipPackage = {
   id: string;
   name: string;
   accessFee: string;
+  /** Access fee in whole Naira — what actually gets charged via KoraPay. */
+  amountNaira: number;
   perSecond: string;
   per20Seconds: string;
   highlighted: boolean;
@@ -21,6 +23,7 @@ export const membershipPackages: MembershipPackage[] = [
     id: "silver",
     name: "Jovia Silver",
     accessFee: "₦9,000",
+    amountNaira: 9000,
     perSecond: "₦50",
     per20Seconds: "₦1,000",
     highlighted: false,
@@ -44,6 +47,7 @@ export const membershipPackages: MembershipPackage[] = [
     id: "gold",
     name: "Jovia Gold",
     accessFee: "₦15,000",
+    amountNaira: 15000,
     perSecond: "₦100",
     per20Seconds: "₦2,000",
     highlighted: true,

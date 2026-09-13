@@ -38,7 +38,7 @@ export async function signupAction(
   });
 
   await setSession({ userId: user.id, email: user.email });
-  redirect("/dashboard");
+  redirect("/signup/success");
 }
 
 export async function loginAction(

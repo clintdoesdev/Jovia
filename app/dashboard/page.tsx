@@ -5,7 +5,7 @@ import { logoutAction } from "@/lib/actions/auth";
 import { Logo } from "@/components/Logo";
 import { Badge } from "@/components/ui/Badge";
 import { membershipPackages } from "@/lib/config/tiers";
-import { Button } from "@/components/ui/Button";
+import { Button, ButtonLink } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Dashboard — Jovia Network",
@@ -39,21 +39,41 @@ export default async function DashboardPage() {
           membership experience here.
         </p>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2">
-          {membershipPackages.map((pkg) => (
-            <div
-              key={pkg.id}
-              className="rounded-2xl border border-border bg-surface px-5 py-8 text-center"
-            >
-              <p className="text-sm font-semibold text-foreground">{pkg.name}</p>
-              <span className="mt-2 block text-3xl font-extrabold text-money-500">
-                {pkg.accessFee}
-              </span>
-              <p className="mt-1 text-sm text-muted">
-                {pkg.perSecond}/sec · {pkg.per20Seconds} every 20 seconds
-              </p>
-            </div>
-          ))}
+        {user.activePackage ? (
+          <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-money-500/30 bg-money-500/10 px-4 py-1.5 text-sm font-semibold text-money-500">
+            Active package: {membershipPackages.find((p) => p.id === user.activePackage)?.name ?? user.activePackage}
+          </p>
+        ) : (
+          <p className="mt-6 text-sm text-muted-soft">
+            You don&apos;t have an active package yet — pay below to activate one.
+          </p>
+        )}
+
+        <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          {membershipPackages.map((pkg) => {
+            const isActive = user.activePackage === pkg.id;
+            return (
+              <div
+                key={pkg.id}
+                className="rounded-2xl border border-border bg-surface px-5 py-8 text-center"
+              >
+                <p className="text-sm font-semibold text-foreground">{pkg.name}</p>
+                <span className="mt-2 block text-3xl font-extrabold text-money-500">
+                  {pkg.accessFee}
+                </span>
+                <p className="mt-1 text-sm text-muted">
+                  {pkg.perSecond}/sec · {pkg.per20Seconds} every 20 seconds
+                </p>
+                <ButtonLink
+                  href={`/payment?package=${pkg.id}`}
+                  variant={isActive ? "ghost" : "cta"}
+                  className="mt-5 w-full"
+                >
+                  {isActive ? "Active" : `Pay ${pkg.accessFee} with KoraPay`}
+                </ButtonLink>
+              </div>
+            );
+          })}
         </div>
       </main>
     </div>

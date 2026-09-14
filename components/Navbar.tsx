@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/Logo";
-import { ButtonLink } from "@/components/ui/Button";
 
 const links = [
   { href: "/#how-it-works", label: "How it works" },
@@ -59,11 +58,6 @@ export function Navbar() {
           ))}
         </ul>
         <div className="flex items-center gap-3">
-          <div className="hidden md:block">
-            <ButtonLink href="/login" variant="ghost">
-              Log in
-            </ButtonLink>
-          </div>
           <button
             type="button"
             onClick={() => setMobileOpen((open) => !open)}
@@ -100,11 +94,6 @@ export function Navbar() {
                 </li>
               ))}
             </ul>
-            <div className="border-t border-border-soft px-6 py-4">
-              <ButtonLink href="/login" variant="ghost" className="w-full">
-                Log in
-              </ButtonLink>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>

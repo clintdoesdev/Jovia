@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { PageHeader } from "@/components/PageHeader";
-import { SignupBenefits } from "@/components/auth/SignupBenefits";
 import { SignupForm } from "@/components/auth/SignupForm";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
@@ -31,11 +30,8 @@ export default function SignupPage() {
           title="Sign up for Jovia"
           description="Enter your details below to create your Jovia account. It takes less than two minutes."
         />
-        <div className="mx-auto grid max-w-6xl gap-6 px-6 py-16 lg:grid-cols-2">
+        <div className="mx-auto max-w-md px-6 py-16">
           <Reveal>
-            <SignupBenefits />
-          </Reveal>
-          <Reveal delay={0.1}>
             <SignupForm />
           </Reveal>
         </div>

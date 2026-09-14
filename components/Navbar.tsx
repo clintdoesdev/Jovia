@@ -64,9 +64,6 @@ export function Navbar() {
               Log in
             </ButtonLink>
           </div>
-          <ButtonLink href="/signup" variant="cta">
-            Join Jovia
-          </ButtonLink>
           <button
             type="button"
             onClick={() => setMobileOpen((open) => !open)}

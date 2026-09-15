@@ -21,9 +21,12 @@ export async function proxy(request: NextRequest) {
   const isProtected = PROTECTED_PREFIXES.some((prefix) =>
     pathname.startsWith(prefix),
   );
-  const isAuthOnly = AUTH_ONLY_PREFIXES.some((prefix) =>
-    pathname.startsWith(prefix),
-  );
+  // Exact match only — /login and /signup have no legitimate subroutes that
+  // should bounce a logged-in visitor to /dashboard, and Next's matcher
+  // treats a bare path like "/signup" as a prefix, which would otherwise
+  // also catch /signup/success (the post-registration Telegram handoff)
+  // for a user who just got a session set two requests ago.
+  const isAuthOnly = AUTH_ONLY_PREFIXES.some((prefix) => pathname === prefix);
 
   if (isProtected && !session) {
     // Redirects are browser-side, so it's safe to build the URL from the

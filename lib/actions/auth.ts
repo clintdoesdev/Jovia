@@ -29,7 +29,10 @@ export async function signupAction(
 
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
-    return { fieldErrors: { email: "An account with that email already exists" } };
+    return {
+      error: "An account with this email already exists — log in instead.",
+      fieldErrors: { email: "Already registered" },
+    };
   }
 
   const passwordHash = await hashPassword(password);

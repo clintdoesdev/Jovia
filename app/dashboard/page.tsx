@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/Badge";
 import { membershipPackages } from "@/lib/config/tiers";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { telegramGroupUrl } from "@/lib/telegram";
+import { sectionUrl } from "@/lib/subdomain";
 
 export const metadata: Metadata = {
   title: "Dashboard — Jovia Network",
@@ -23,7 +24,7 @@ const statusLabel: Record<string, string> = {
 export default async function DashboardPage() {
   const user = await getCurrentUser();
   if (!user) {
-    redirect("/login");
+    redirect(await sectionUrl("dashboard", "/login?next=/dashboard"));
   }
 
   return (

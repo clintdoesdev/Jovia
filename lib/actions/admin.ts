@@ -6,11 +6,12 @@ import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/session";
 import { generateInviteCode } from "@/lib/invites";
 import { membershipPackages } from "@/lib/config/tiers";
+import { sectionUrl } from "@/lib/subdomain";
 
 async function requireAdmin() {
   const user = await getCurrentUser();
-  if (!user) redirect("/login?next=/admin");
-  if (!user.isAdmin) redirect("/dashboard");
+  if (!user) redirect(await sectionUrl("admin", "/login?next=/admin"));
+  if (!user.isAdmin) redirect(await sectionUrl("dashboard", "/dashboard"));
   return user;
 }
 

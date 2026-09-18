@@ -5,6 +5,7 @@ import { logoutAction } from "@/lib/actions/auth";
 import { Logo } from "@/components/Logo";
 import { Button } from "@/components/ui/Button";
 import { AdminNavTabs } from "@/components/admin/AdminNavTabs";
+import { sectionUrl } from "@/lib/subdomain";
 
 export const metadata: Metadata = {
   title: "Jovia Admin",
@@ -13,8 +14,8 @@ export const metadata: Metadata = {
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const user = await getCurrentUser();
-  if (!user) redirect("/login?next=/admin");
-  if (!user.isAdmin) redirect("/dashboard");
+  if (!user) redirect(await sectionUrl("admin", "/login?next=/admin"));
+  if (!user.isAdmin) redirect(await sectionUrl("dashboard", "/dashboard"));
 
   return (
     <div className="min-h-screen">

@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { hashPassword, verifyPassword } from "@/lib/auth";
 import { clearSession, setSession } from "@/lib/session";
 import { loginSchema, signupSchema } from "@/lib/validation";
+import { sectionUrl } from "@/lib/subdomain";
 
 export type ActionState = {
   error?: string;
@@ -69,12 +70,12 @@ export async function loginAction(
   }
 
   await setSession({ userId: user.id, email: user.email });
-  redirect("/dashboard");
+  redirect(await sectionUrl("dashboard", "/dashboard"));
 }
 
 export async function logoutAction() {
   await clearSession();
-  redirect("/");
+  redirect(await sectionUrl("main", "/"));
 }
 
 function flattenFieldErrors(error: { issues: { path: PropertyKey[]; message: string }[] }) {

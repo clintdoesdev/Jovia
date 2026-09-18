@@ -10,6 +10,7 @@ import { membershipPackages } from "@/lib/config/tiers";
 import { initializeKorapayCharge } from "@/lib/korapay";
 import { siteConfig } from "@/lib/site-config";
 import { checkInviteValidity } from "@/lib/invites";
+import { sectionUrl } from "@/lib/subdomain";
 
 export type ActionState = { error?: string; fieldErrors?: Record<string, string> };
 
@@ -150,5 +151,5 @@ export async function completeInviteRegistrationAction(
   ]);
 
   await setSession({ userId: user.id, email: user.email });
-  redirect("/dashboard");
+  redirect(await sectionUrl("dashboard", "/dashboard"));
 }

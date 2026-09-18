@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { playSteps, playNote } from "@/lib/content/play-and-earn";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 export function PlayAndEarn() {
   return (
@@ -48,7 +49,7 @@ export function PlayAndEarn() {
             ))}
           </StaggerGroup>
 
-          <ButtonLink href="/signup" variant="cta" className="mt-8">
+          <ButtonLink href={telegramVendorUrl} variant="cta" className="mt-8">
             Join us now
           </ButtonLink>
         </Reveal>

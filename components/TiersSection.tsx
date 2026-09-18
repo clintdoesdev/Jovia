@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 export function TiersSection() {
   return (
@@ -94,7 +95,7 @@ export function TiersSection() {
               </ul>
 
               <ButtonLink
-                href="/signup"
+                href={telegramVendorUrl}
                 variant={pkg.highlighted ? "cta" : "ghost"}
                 className="mt-8"
               >

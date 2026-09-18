@@ -4,7 +4,7 @@ import { sessionCookie, verifySessionToken } from "@/lib/auth";
 import { sectionForHostname, sectionHost } from "@/lib/subdomain";
 
 const PROTECTED_PREFIXES = ["/dashboard", "/payments", "/admin"];
-const AUTH_ONLY_PREFIXES = ["/login", "/signup"];
+const AUTH_ONLY_PREFIXES = ["/login"];
 
 export async function proxy(request: NextRequest) {
   // `nextUrl.hostname` can lag behind the real Host header in this setup,
@@ -46,11 +46,6 @@ export async function proxy(request: NextRequest) {
   const isProtected = PROTECTED_PREFIXES.some((prefix) =>
     pathname.startsWith(prefix),
   );
-  // Exact match only — /login and /signup have no legitimate subroutes that
-  // should bounce a logged-in visitor to /dashboard, and Next's matcher
-  // treats a bare path like "/signup" as a prefix, which would otherwise
-  // also catch /signup/success (the post-registration Telegram handoff)
-  // for a user who just got a session set two requests ago.
   const isAuthOnly = AUTH_ONLY_PREFIXES.some((prefix) => pathname === prefix);
 
   if (isProtected && !session) {
@@ -84,5 +79,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/dashboard/:path*", "/payments/:path*", "/admin/:path*", "/login", "/signup"],
+  matcher: ["/", "/dashboard/:path*", "/payments/:path*", "/admin/:path*", "/login"],
 };

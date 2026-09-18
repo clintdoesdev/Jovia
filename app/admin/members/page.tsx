@@ -38,7 +38,7 @@ export default async function AdminMembersPage() {
           Export CSV
         </ButtonLink>
       </div>
-      <p className="mt-2 text-muted">Everyone who has registered, via signup or an invite.</p>
+      <p className="mt-2 text-muted">Everyone who has registered through an invite.</p>
 
       <div className="mt-6 space-y-3">
         {members.map((member) => (

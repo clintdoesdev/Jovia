@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { registrationSteps as steps } from "@/lib/content/registration-steps";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 export function HowItWorks() {
   return (
@@ -19,7 +20,7 @@ export function HowItWorks() {
               exactly what happens when you join.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-5">
-              <ButtonLink href="/signup" variant="ghost">
+              <ButtonLink href={telegramVendorUrl} variant="ghost">
                 Join us now
               </ButtonLink>
               <a

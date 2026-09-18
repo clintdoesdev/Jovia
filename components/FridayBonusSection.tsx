@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { fridayBonusSteps } from "@/lib/content/friday-bonus";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 export function FridayBonusSection() {
   return (
@@ -52,7 +53,7 @@ export function FridayBonusSection() {
             Monthly validity applies
           </p>
           <div className="mt-6 flex justify-center">
-            <ButtonLink href="/signup" variant="cta" className="px-8 py-3.5 text-base">
+            <ButtonLink href={telegramVendorUrl} variant="cta" className="px-8 py-3.5 text-base">
               Join us now
             </ButtonLink>
           </div>

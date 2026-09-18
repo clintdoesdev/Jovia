@@ -7,6 +7,7 @@ import { checkInviteValidity } from "@/lib/invites";
 import { membershipPackages } from "@/lib/config/tiers";
 import { InvitePaymentForm } from "@/components/invite/InvitePaymentForm";
 import { ButtonLink } from "@/components/ui/Button";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 export const metadata: Metadata = {
   title: "You're Invited to Jovia",
@@ -48,8 +49,8 @@ export default async function InvitePage({
           ) : (
             <div className="rounded-2xl border border-border bg-surface p-8 text-center">
               <p className="text-muted">{invalidCopy[validity.reason]}</p>
-              <ButtonLink href="/signup" variant="cta" className="mt-6">
-                Sign up instead
+              <ButtonLink href={telegramVendorUrl} variant="cta" className="mt-6">
+                Message us on Telegram
               </ButtonLink>
             </div>
           )}

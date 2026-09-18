@@ -4,13 +4,13 @@
 export const registrationSteps = [
   {
     n: "01",
-    title: "Create your account",
-    body: "Sign up with your name, email, and a secure password in under a minute.",
+    title: "Get your invite",
+    body: "Message us on Telegram and we'll send you a private invite link to join Jovia.",
   },
   {
     n: "02",
     title: "Activate a package",
-    body: "Choose Jovia Silver (₦9,000) or Jovia Gold (₦15,000) to unlock your earning rate.",
+    body: "Follow your invite link to pay for Jovia Silver (₦9,000) or Jovia Gold (₦15,000) — your account is created the moment payment clears.",
   },
   {
     n: "03",

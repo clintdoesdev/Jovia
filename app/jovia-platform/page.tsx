@@ -12,6 +12,7 @@ import { registrationSteps } from "@/lib/content/registration-steps";
 import { platformFaqs } from "@/lib/content/platform-faq";
 import { breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 const title = "The Jovia Platform: One Account, Ever More Ways to Earn";
 const description =
@@ -114,7 +115,7 @@ export default function JoviaPlatformPage() {
 
             <Reveal delay={0.15}>
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <ButtonLink href="/signup" variant="cta">
+                <ButtonLink href={telegramVendorUrl} variant="cta">
                   Join the Jovia platform
                 </ButtonLink>
                 <a href="/jovia-app" className="text-sm font-semibold text-gold-400 hover:underline">

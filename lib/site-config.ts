@@ -35,7 +35,6 @@ export const siteConfig = {
     "earn playing games",
   ],
   links: {
-    signUp: "/signup",
     login: "/login",
     dashboard: "/dashboard",
     howToRegister: "/how-to-register",

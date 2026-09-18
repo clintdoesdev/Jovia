@@ -5,11 +5,11 @@ export const platformFaqs = [
   },
   {
     q: "Is the Jovia platform free to join?",
-    a: "Creating a Jovia account is free. To start earning, activate a Jovia Silver (₦9,000) or Jovia Gold (₦15,000) package.",
+    a: "Joining Jovia is invite-only. Message us on Telegram to get a private invite link, then activate a Jovia Silver (₦9,000) or Jovia Gold (₦15,000) package to create your account.",
   },
   {
     q: "How do I access the Jovia platform?",
-    a: "Sign up at joviawebsite.com.ng/signup, then log in anytime from any browser to reach your member dashboard.",
+    a: "Follow your invite link to pay and register, then log in anytime from any browser at joviawebsite.com.ng/login to reach your member dashboard.",
   },
   {
     q: "What devices does the Jovia platform work on?",

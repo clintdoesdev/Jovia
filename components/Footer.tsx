@@ -1,6 +1,7 @@
 import { FaInstagram, FaXTwitter, FaFacebookF } from "react-icons/fa6";
 import { Logo } from "@/components/Logo";
 import { siteConfig } from "@/lib/site-config";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 const jovieLinks = [
   { href: "/", label: "Landing page" },
@@ -10,7 +11,7 @@ const jovieLinks = [
   { href: "/#play-and-earn", label: "Play & Earn" },
   { href: "/#friday-bonus-rewards", label: "Friday Bonus Rewards" },
   { href: "/how-to-register", label: "How to register" },
-  { href: "/signup", label: "Sign up" },
+  { href: telegramVendorUrl, label: "Join us" },
 ];
 
 const supportLinks = [

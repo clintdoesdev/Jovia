@@ -31,9 +31,10 @@ npm run dev
 ## Architecture notes / framework gotchas handled here
 
 - **`proxy.ts`, not `middleware.ts`.** Next 16 renamed the file convention;
-  the exported function is named `proxy`. It gates `/dashboard` (requires a
-  valid session) and `/login` + `/signup` (redirects away if already
-  signed in).
+  the exported function is named `proxy`. It gates `/dashboard`, `/payments`,
+  and `/admin` (require a valid session) and `/login` (redirects away if
+  already signed in), plus subdomain canonicalization for
+  `admin.<domain>`/`dashboard.<domain>`.
 - **Host/protocol resolution in `proxy.ts`.** `request.nextUrl.hostname`
   isn't trustworthy behind this setup's proxying, so the host comes from
   `x-forwarded-host` (falling back to `host`) and the scheme from
@@ -58,10 +59,14 @@ npm run dev
 
 ## Structure
 
-- `app/` — routes: `/` (landing), `/login`, `/signup`, `/dashboard`
-  (protected), `/api/health`
+- `app/` — routes: `/` (landing), `/login`, `/dashboard` (protected),
+  `/payments` + `/payments/callback` (protected), `/invite/[code]` +
+  `/invite/[code]/register` (invite-gated pay-then-register flow),
+  `/admin/*` (admin-only), `/api/health`
 - `components/` — landing sections, auth forms, shared UI
-- `lib/actions/auth.ts` — server actions for signup/login/logout
+- `lib/actions/auth.ts` — server actions for login/logout (there is no
+  self-serve signup — membership is invite + payment only, via
+  `lib/actions/invite-flow.ts`)
 - `lib/auth.ts` / `lib/session.ts` — password hashing + JWT session cookie
 - `lib/config/tiers.ts` — placeholder membership-tier data
 - `prisma/` — schema, hand-authored migrations, seed script

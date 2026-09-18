@@ -9,6 +9,7 @@ import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { installSteps } from "@/lib/content/install-steps";
 import { breadcrumbJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 const title = "The Jovia App — Install on Any Device";
 const description =
@@ -80,7 +81,7 @@ export default function JoviaAppPage() {
 
           <Reveal delay={0.15}>
             <div className="mx-auto mt-12 flex max-w-5xl flex-wrap items-center gap-4">
-              <ButtonLink href="/signup" variant="cta">
+              <ButtonLink href={telegramVendorUrl} variant="cta">
                 Join us now
               </ButtonLink>
               <a href="/jovia-platform" className="text-sm font-semibold text-gold-400 hover:underline">

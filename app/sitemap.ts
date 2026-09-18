@@ -29,7 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/jovia-platform", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-12" },
     { path: "/jovia-app", priority: 0.8, changeFrequency: "monthly", lastModified: "2026-09-12" },
     { path: "/how-to-register", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-12" },
-    { path: "/signup", priority: 0.8, changeFrequency: "monthly", lastModified: "2026-09-12" },
     { path: "/login", priority: 0.4, changeFrequency: "yearly", lastModified: "2026-09-12" },
   ];
 

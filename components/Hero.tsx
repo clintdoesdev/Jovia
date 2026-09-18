@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 const stats = [
   { value: "₦9K–₦15K", label: "Silver & Gold package access fee" },
@@ -50,7 +51,7 @@ export function Hero() {
           </StaggerItem>
 
           <StaggerItem className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/signup" variant="cta" className="px-7 py-3.5 text-base">
+            <ButtonLink href={telegramVendorUrl} variant="cta" className="px-7 py-3.5 text-base">
               Join us now
             </ButtonLink>
             <ButtonLink href="/#how-it-works" variant="ghost" className="px-7 py-3.5 text-base">

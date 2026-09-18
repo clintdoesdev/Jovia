@@ -9,6 +9,7 @@ import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { breadcrumbJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import { registrationSteps } from "@/lib/content/registration-steps";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 const title = "How to Register on Jovia (Step-by-Step Guide)";
 const description =
@@ -71,7 +72,7 @@ export default function HowToRegisterPage() {
 
           <Reveal delay={0.15}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <ButtonLink href="/signup" variant="cta">
+              <ButtonLink href={telegramVendorUrl} variant="cta">
                 Join us now
               </ButtonLink>
               <a href="/jovia-platform" className="text-sm font-semibold text-gold-400 hover:underline">

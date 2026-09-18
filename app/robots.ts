@@ -24,7 +24,7 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/dashboard", "/payments", "/signup/success", "/admin", "/invite", "/api"],
+      disallow: ["/dashboard", "/payments", "/admin", "/invite", "/api"],
     },
     sitemap: `${siteConfig.url}/sitemap.xml`,
     host: siteConfig.url,

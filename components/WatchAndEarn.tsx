@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { watchCategories, watchSteps, watchExamples } from "@/lib/content/watch-and-earn";
+import { telegramVendorUrl } from "@/lib/telegram";
 
 export function WatchAndEarn() {
   return (
@@ -61,7 +62,7 @@ export function WatchAndEarn() {
             ))}
           </div>
 
-          <ButtonLink href="/signup" variant="cta" className="mt-8">
+          <ButtonLink href={telegramVendorUrl} variant="cta" className="mt-8">
             Join us now
           </ButtonLink>
         </Reveal>

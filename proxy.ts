@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { sessionCookie, verifySessionToken } from "@/lib/auth";
 
-const PROTECTED_PREFIXES = ["/dashboard", "/payment"];
+const PROTECTED_PREFIXES = ["/dashboard", "/payment", "/admin"];
 const AUTH_ONLY_PREFIXES = ["/login", "/signup"];
 
 export async function proxy(request: NextRequest) {
@@ -51,5 +51,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/payment/:path*", "/login", "/signup"],
+  matcher: ["/dashboard/:path*", "/payment/:path*", "/admin/:path*", "/login", "/signup"],
 };

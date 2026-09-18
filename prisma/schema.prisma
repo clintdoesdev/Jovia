@@ -8,31 +8,60 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  name          String
-  passwordHash  String
-  activePackage String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  payments      Payment[]
+  id             String    @id @default(cuid())
+  email          String    @unique
+  name           String
+  username       String?   @unique
+  phone          String?
+  country        String?
+  passwordHash   String
+  activePackage  String?
+  status         String    @default("registered")
+  isAdmin        Boolean   @default(false)
+  activationDate DateTime?
+  loginNote      String?
+  adminNote      String?
+  inviteId       String?   @unique
+  invite         Invite?   @relation(fields: [inviteId], references: [id])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  payments       Payment[]
 
   @@map("users")
 }
 
+model Invite {
+  id        String    @id @default(cuid())
+  code      String    @unique
+  note      String?
+  packageId String?
+  expiresAt DateTime?
+  status    String    @default("pending")
+  createdAt DateTime  @default(now())
+  user      User?
+  payments  Payment[]
+
+  @@map("invites")
+}
+
 model Payment {
   id            String   @id @default(cuid())
-  userId        String
-  user          User     @relation(fields: [userId], references: [id])
+  userId        String?
+  user          User?    @relation(fields: [userId], references: [id])
+  inviteId      String?
+  invite        Invite?  @relation(fields: [inviteId], references: [id])
   packageId     String
   amount        Int
   currency      String   @default("NGN")
   reference     String   @unique
   status        String   @default("pending")
   paymentMethod String?
+  customerName  String?
+  customerEmail String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
   @@index([userId])
+  @@index([inviteId])
   @@map("payments")
 }

@@ -20,6 +20,26 @@ async function main() {
   });
 
   console.log("Seeded demo user: demo@joviawebsite.com.ng / password123");
+
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  if (adminEmail && adminPassword) {
+    const adminPasswordHash = await bcrypt.hash(adminPassword, 12);
+    await prisma.user.upsert({
+      where: { email: adminEmail },
+      update: { isAdmin: true, passwordHash: adminPasswordHash },
+      create: {
+        name: "Jovia Admin",
+        email: adminEmail,
+        passwordHash: adminPasswordHash,
+        isAdmin: true,
+        status: "active",
+      },
+    });
+    console.log(`Seeded admin user: ${adminEmail}`);
+  } else {
+    console.log("ADMIN_EMAIL / ADMIN_PASSWORD not set — skipped admin seed.");
+  }
 }
 
 main()

@@ -34,6 +34,8 @@ export async function initializePaymentAction(
       currency: "NGN",
       reference,
       status: "pending",
+      customerName: user.name,
+      customerEmail: user.email,
     },
   });
 

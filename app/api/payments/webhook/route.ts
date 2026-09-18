@@ -41,7 +41,10 @@ export async function POST(request: Request) {
     data: { status, paymentMethod: paymentMethod ?? payment.paymentMethod },
   });
 
-  if (status === "success") {
+  // Invite-flow payments (userId null) don't have an account yet — the
+  // registration form that follows checks payment.status itself and
+  // creates the user with activePackage already set from this payment.
+  if (status === "success" && payment.userId) {
     await prisma.user.update({
       where: { id: payment.userId },
       data: { activePackage: payment.packageId },

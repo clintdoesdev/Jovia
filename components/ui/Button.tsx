@@ -1,13 +1,15 @@
 import Link from "next/link";
 import type { ButtonHTMLAttributes } from "react";
 
-type Variant = "cta" | "glow" | "ghost";
+type Variant = "cta" | "glow" | "ghost" | "danger";
 
 const variantClasses: Record<Variant, string> = {
   cta: "btn-shine bg-[image:var(--gradient-cta)] text-ink shadow-[0_8px_30px_-8px_rgba(238,171,14,0.65)] hover:brightness-105 hover:-translate-y-0.5",
   glow: "btn-shine bg-[image:var(--gradient-button)] text-foreground shadow-[0_8px_30px_-8px_rgba(168,85,247,0.65)] hover:brightness-110 hover:-translate-y-0.5",
   ghost:
     "border border-border text-foreground hover:border-violet-500 hover:text-violet-400 hover:-translate-y-0.5",
+  danger:
+    "border border-red-500/40 text-red-400 hover:border-red-500 hover:bg-red-500/10 hover:-translate-y-0.5",
 };
 
 const base =

@@ -93,7 +93,7 @@ const siteJsonLd = {
       "@type": "Organization",
       "@id": `${siteConfig.url}/#organization`,
       name: "Jovia",
-      alternateName: "Jovia Network",
+      alternateName: ["Jovia Network", "Jovia Website"],
       url: siteConfig.url,
       logo: {
         "@type": "ImageObject",
@@ -109,9 +109,11 @@ const siteJsonLd = {
       "@id": `${siteConfig.url}/#website`,
       url: siteConfig.url,
       name: "Jovia Website",
-      alternateName: "Jovia",
+      alternateName: ["Jovia", "Jovia Network", "Official Jovia Website"],
       description: siteConfig.description,
+      inLanguage: "en",
       publisher: { "@id": `${siteConfig.url}/#organization` },
+      about: { "@id": `${siteConfig.url}/#organization` },
     },
   ],
 };

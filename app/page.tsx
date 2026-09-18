@@ -45,10 +45,13 @@ const homeImages = [
 const webPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
+  "@id": `${siteConfig.url}/#webpage`,
   name: title,
   description,
   url: siteConfig.url,
+  inLanguage: "en",
   isPartOf: { "@id": `${siteConfig.url}/#website` },
+  about: { "@id": `${siteConfig.url}/#organization` },
   primaryImageOfPage: {
     "@type": "ImageObject",
     url: homeImages[0].url,

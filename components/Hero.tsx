@@ -43,10 +43,11 @@ export function Hero() {
 
           <StaggerItem>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-muted sm:text-lg">
-              Welcome to the official Jovia website — home of Jovia Network, a
-              membership platform where staying active keeps paying off.
-              Placeholder copy: swap in Jovia&apos;s real value proposition
-              whenever it&apos;s ready.
+              Welcome to the official Jovia website — home of Jovia Network.
+              Activate a Silver or Gold membership package, then earn every
+              second you spend watching videos, playing games, and staying
+              active on the platform, with exclusive Friday Bonus Rewards for
+              Gold members.
             </p>
           </StaggerItem>
 

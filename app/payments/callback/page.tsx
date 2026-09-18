@@ -69,7 +69,7 @@ export default async function PaymentCallbackPage({
                 Continue on Telegram
               </ButtonLink>
             ) : (
-              <ButtonLink href="/payment" variant="cta" className="w-full sm:w-auto">
+              <ButtonLink href="/payments" variant="cta" className="w-full sm:w-auto">
                 {state === "pending" ? "Back to payment page" : "Try again"}
               </ButtonLink>
             )}

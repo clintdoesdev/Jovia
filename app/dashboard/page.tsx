@@ -111,7 +111,7 @@ export default async function DashboardPage() {
                   <p className="mt-1 text-sm text-muted">
                     {pkg.perSecond}/sec · {pkg.per20Seconds} every 20 seconds
                   </p>
-                  <ButtonLink href={`/payment?package=${pkg.id}`} variant="cta" className="mt-5 w-full">
+                  <ButtonLink href={`/payments?package=${pkg.id}`} variant="cta" className="mt-5 w-full">
                     Pay {pkg.accessFee} with KoraPay
                   </ButtonLink>
                 </div>

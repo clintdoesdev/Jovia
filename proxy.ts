@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { sessionCookie, verifySessionToken } from "@/lib/auth";
 import { sectionForHostname, sectionHost } from "@/lib/subdomain";
 
-const PROTECTED_PREFIXES = ["/dashboard", "/payment", "/admin"];
+const PROTECTED_PREFIXES = ["/dashboard", "/payments", "/admin"];
 const AUTH_ONLY_PREFIXES = ["/login", "/signup"];
 
 export async function proxy(request: NextRequest) {
@@ -84,5 +84,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/dashboard/:path*", "/payment/:path*", "/admin/:path*", "/login", "/signup"],
+  matcher: ["/", "/dashboard/:path*", "/payments/:path*", "/admin/:path*", "/login", "/signup"],
 };

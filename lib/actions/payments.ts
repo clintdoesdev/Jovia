@@ -16,7 +16,7 @@ export async function initializePaymentAction(
 ): Promise<PaymentActionState> {
   const user = await getCurrentUser();
   if (!user) {
-    redirect("/login?next=/payment");
+    redirect("/login?next=/payments");
   }
 
   const pkg = membershipPackages.find((p) => p.id === formData.get("packageId"));
@@ -46,7 +46,7 @@ export async function initializePaymentAction(
     customerName: user.name,
     customerEmail: user.email,
     narration: `${pkg.name} package activation`,
-    redirectUrl: `${siteConfig.url}/payment/callback?reference=${reference}`,
+    redirectUrl: `${siteConfig.url}/payments/callback?reference=${reference}`,
     notificationUrl: `${siteConfig.url}/api/payments/webhook`,
   });
 

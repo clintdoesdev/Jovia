@@ -20,7 +20,7 @@ export default async function PaymentPage({
 }) {
   const user = await getCurrentUser();
   if (!user) {
-    redirect("/login?next=/payment");
+    redirect("/login?next=/payments");
   }
 
   const { package: preselected } = await searchParams;

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
@@ -19,10 +18,6 @@ export default async function PaymentPage({
   searchParams: Promise<{ package?: string }>;
 }) {
   const user = await getCurrentUser();
-  if (!user) {
-    redirect("/login?next=/payments");
-  }
-
   const { package: preselected } = await searchParams;
 
   return (
@@ -41,6 +36,7 @@ export default async function PaymentPage({
               key={pkg.id}
               pkg={pkg}
               defaultSelected={pkg.id === preselected}
+              loggedIn={Boolean(user)}
             />
           ))}
         </div>

@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FieldInput } from "@/components/ui/Field";
 import { initializePaymentAction, type PaymentActionState } from "@/lib/actions/payments";
 import type { MembershipPackage } from "@/lib/config/tiers";
 
@@ -11,9 +12,11 @@ const initialState: PaymentActionState = {};
 export function PaymentPackageCard({
   pkg,
   defaultSelected = false,
+  loggedIn,
 }: {
   pkg: MembershipPackage;
   defaultSelected?: boolean;
+  loggedIn: boolean;
 }) {
   const [state, formAction, pending] = useActionState(initializePaymentAction, initialState);
 
@@ -49,6 +52,25 @@ export function PaymentPackageCard({
 
       <form action={formAction} className="mt-8">
         <input type="hidden" name="packageId" value={pkg.id} />
+        {!loggedIn && (
+          <div className="mb-4 space-y-4">
+            <FieldInput
+              label="Full name"
+              name="name"
+              placeholder="Ada Lovelace"
+              required
+              error={state.fieldErrors?.name}
+            />
+            <FieldInput
+              label="Email address"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+              error={state.fieldErrors?.email}
+            />
+          </div>
+        )}
         {state.error && <p className="mb-3 text-sm text-red-400">{state.error}</p>}
         <Button
           type="submit"

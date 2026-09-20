@@ -6,6 +6,39 @@ import { sectionForHostname, sectionHost } from "@/lib/subdomain";
 const PROTECTED_PREFIXES = ["/dashboard", "/admin"];
 const AUTH_ONLY_PREFIXES = ["/login"];
 
+// Temporary: the member dashboard and admin panel are fully shut down —
+// including for admins — while /payments runs as a direct, no-login entry
+// point. To bring either back, remove it from this set; everything below
+// (canonicalization, auth gating) is untouched and resumes working as soon
+// as a section is no longer listed here.
+const SHUT_DOWN_SECTIONS = new Set(["admin", "dashboard"]);
+
+function unavailableResponse() {
+  const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Temporarily Unavailable — Jovia</title>
+  </head>
+  <body style="margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#05040a;color:#f5f5f7;font-family:system-ui,-apple-system,sans-serif;text-align:center;padding:24px;">
+    <div>
+      <h1 style="font-size:1.5rem;margin-bottom:0.5rem;">Temporarily unavailable</h1>
+      <p style="color:#a1a1aa;">This section is offline for now. Please check back shortly.</p>
+    </div>
+  </body>
+</html>`;
+  return new NextResponse(html, {
+    status: 503,
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "no-store",
+      "X-Robots-Tag": "noindex",
+      "Retry-After": "3600",
+    },
+  });
+}
+
 export async function proxy(request: NextRequest) {
   // `nextUrl.hostname` can lag behind the real Host header in this setup,
   // so always resolve the host (and scheme) explicitly.
@@ -23,6 +56,17 @@ export async function proxy(request: NextRequest) {
   // This is null on localhost/*.vercel.app previews, so none of it fires
   // outside the real production domain family.
   const section = sectionForHostname(host);
+
+  if (
+    SHUT_DOWN_SECTIONS.has(section ?? "") ||
+    (section === "main" &&
+      (pathname === "/admin" ||
+        pathname.startsWith("/admin/") ||
+        pathname === "/dashboard" ||
+        pathname.startsWith("/dashboard/")))
+  ) {
+    return unavailableResponse();
+  }
 
   if (section === "admin" && pathname === "/") {
     return NextResponse.redirect(new URL("/admin", `${protocol}://${host}`));

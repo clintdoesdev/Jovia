@@ -8,7 +8,7 @@ import { PaymentPackageCard } from "@/components/payment/PaymentPackageCard";
 
 export const metadata: Metadata = {
   title: "Pay for Your Jovia Package",
-  description: "Pay securely for your Jovia Silver or Gold package with KoraPay.",
+  description: "Pay securely for your Jovia Silver or Gold package with KoraPay. A 1.5% KoraPay charge is added to the access fee.",
   robots: { index: false, follow: false },
 };
 

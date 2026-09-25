@@ -10,7 +10,7 @@ import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { platformFeatures } from "@/lib/content/features";
 import { registrationSteps } from "@/lib/content/registration-steps";
 import { platformFaqs } from "@/lib/content/platform-faq";
-import { breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, pageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import { telegramVendorUrl } from "@/lib/telegram";
 
@@ -18,13 +18,7 @@ const title = "The Jovia Platform: One Account, Ever More Ways to Earn";
 const description =
   "The Jovia platform brings account creation, active-session rewards, and the Silver and Gold membership packages together in one place.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/jovia-platform" },
-  openGraph: { title, description, url: "/jovia-platform" },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({ title, description, path: "/jovia-platform" });
 
 const webPageJsonLd = {
   "@context": "https://schema.org",

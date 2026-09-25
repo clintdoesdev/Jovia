@@ -45,7 +45,7 @@ export async function initializeInvitePaymentAction(
     data: {
       inviteId: invite.id,
       packageId: pkg.id,
-      amount: pkg.amountNaira,
+      amount: pkg.totalNaira,
       currency: "NGN",
       reference,
       status: "pending",
@@ -55,7 +55,7 @@ export async function initializeInvitePaymentAction(
   });
 
   const result = await initializeKorapayCharge({
-    amount: pkg.amountNaira,
+    amount: pkg.totalNaira,
     currency: "NGN",
     reference,
     customerName: parsed.data.name,

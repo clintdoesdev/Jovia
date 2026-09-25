@@ -2,18 +2,12 @@ import type { Metadata } from "next";
 import { AuthSplitLayout } from "@/components/auth/AuthSplitLayout";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
 const title = "Jovia Login";
 const description = "Log in to your Jovia account to access your member dashboard.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/login" },
-  openGraph: { title, description, url: "/login" },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({ title, description, path: "/login" });
 
 export default function LoginPage() {
   return (

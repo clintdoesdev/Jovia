@@ -15,23 +15,13 @@ import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { homeFaqs } from "@/lib/content/faq";
-import { faqJsonLd, absoluteUrl } from "@/lib/seo";
+import { faqJsonLd, absoluteUrl, pageMetadata, membershipOffersJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 const title = "Jovia Website | Official Home of Jovia Network";
 const description = siteConfig.description;
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/" },
-  openGraph: {
-    title,
-    description,
-    url: "/",
-  },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({ title, description, path: "/" });
 
 const homeImages = [
   { url: absoluteUrl("/brand/hero-art.jpg"), width: 1280, height: 1280 },
@@ -81,6 +71,7 @@ export default function Home() {
       </main>
       <Footer />
       <JsonLd id="home-webpage-jsonld" data={webPageJsonLd} />
+      <JsonLd id="home-offers-jsonld" data={membershipOffersJsonLd()} />
       <JsonLd id="home-faq-jsonld" data={faqJsonLd(homeFaqs.map((f) => ({ q: f.q, a: f.a })))} />
     </>
   );

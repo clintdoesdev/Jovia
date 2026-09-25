@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { FieldInput } from "@/components/ui/Field";
+import { PriceBreakdown } from "@/components/payment/PriceBreakdown";
 import { initializePaymentAction, type PaymentActionState } from "@/lib/actions/payments";
 import type { MembershipPackage } from "@/lib/config/tiers";
 
@@ -36,6 +37,7 @@ export function PaymentPackageCard({
       <p className="mt-2 text-sm font-semibold text-gold-400">
         {pkg.perSecond}/sec · {pkg.per20Seconds} every 20 seconds
       </p>
+      <PriceBreakdown pkg={pkg} className="mt-4 rounded-2xl border border-border-soft bg-white/[0.02] p-4" />
 
       <ul className="mt-6 space-y-2.5 border-t border-border-soft pt-6">
         {pkg.earnings.slice(0, 3).map((line) => (
@@ -78,7 +80,7 @@ export function PaymentPackageCard({
           className="w-full"
           disabled={pending}
         >
-          {pending ? "Starting payment…" : `Pay ${pkg.accessFee} with KoraPay`}
+          {pending ? "Starting payment…" : `Pay ${pkg.totalCharge} with KoraPay`}
         </Button>
       </form>
     </div>

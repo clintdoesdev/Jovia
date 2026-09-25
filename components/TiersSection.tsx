@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { telegramVendorUrl } from "@/lib/telegram";
+import { PriceBreakdown } from "@/components/payment/PriceBreakdown";
 
 export function TiersSection() {
   return (
@@ -50,6 +51,7 @@ export function TiersSection() {
               <p className="mt-2 text-sm font-semibold text-gold-400">
                 {pkg.perSecond}/sec · {pkg.per20Seconds} every 20 seconds
               </p>
+              <PriceBreakdown pkg={pkg} className="mt-4 rounded-2xl border border-border-soft bg-white/[0.02] p-4" />
 
               <ul className="mt-6 space-y-2.5 border-t border-border-soft pt-6">
                 {pkg.earnings.map((line) => (

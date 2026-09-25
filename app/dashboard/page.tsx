@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/Badge";
 import { membershipPackages } from "@/lib/config/tiers";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { telegramGroupUrl } from "@/lib/telegram";
+import { PriceBreakdown } from "@/components/payment/PriceBreakdown";
 import { sectionUrl } from "@/lib/subdomain";
 
 export const metadata: Metadata = {
@@ -111,8 +112,9 @@ export default async function DashboardPage() {
                   <p className="mt-1 text-sm text-muted">
                     {pkg.perSecond}/sec · {pkg.per20Seconds} every 20 seconds
                   </p>
+                  <PriceBreakdown pkg={pkg} className="mt-4 text-left" />
                   <ButtonLink href={`/payments?package=${pkg.id}`} variant="cta" className="mt-5 w-full">
-                    Pay {pkg.accessFee} with KoraPay
+                    Pay {pkg.totalCharge} with KoraPay
                   </ButtonLink>
                 </div>
               ))}

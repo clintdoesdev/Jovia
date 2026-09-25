@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import { registrationSteps } from "@/lib/content/registration-steps";
 import { telegramVendorUrl } from "@/lib/telegram";
@@ -15,13 +15,7 @@ const title = "How to Register on Jovia (Step-by-Step Guide)";
 const description =
   "A step-by-step guide to creating your Jovia account, activating a Silver or Gold package, and starting your first session.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/how-to-register" },
-  openGraph: { title, description, url: "/how-to-register" },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({ title, description, path: "/how-to-register" });
 
 const howToJsonLd = {
   "@context": "https://schema.org",

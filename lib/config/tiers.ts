@@ -3,14 +3,40 @@
 // fixed breakdown of bonus activities.
 export const exchangeRate = "$1 = ₦1,000 inside the system";
 
+// KoraPay's local NGN collection fee (cards, bank transfer, USSD). The
+// charge is passed on to the member on top of the access fee, grossed up
+// so that after KoraPay deducts its percentage from the total, Jovia still
+// settles the full access fee. Update this if the KoraPay rate changes.
+export const korapayFeeRate = 0.015;
+
+function formatNaira(amount: number) {
+  return `₦${amount.toLocaleString("en-NG")}`;
+}
+
+function withKorapayCharge(amountNaira: number) {
+  const totalNaira = Math.ceil(amountNaira / (1 - korapayFeeRate));
+  return {
+    korapayChargeNaira: totalNaira - amountNaira,
+    totalNaira,
+    korapayCharge: formatNaira(totalNaira - amountNaira),
+    totalCharge: formatNaira(totalNaira),
+  };
+}
+
 export type EarningLine = { label: string; value: string; note?: string };
 
 export type MembershipPackage = {
   id: string;
   name: string;
   accessFee: string;
-  /** Access fee in whole Naira — what actually gets charged via KoraPay. */
+  /** Access fee in whole Naira, before the KoraPay charge. */
   amountNaira: number;
+  /** KoraPay processing charge added on top of the access fee, in whole Naira. */
+  korapayChargeNaira: number;
+  /** Access fee + KoraPay charge — what actually gets charged via KoraPay. */
+  totalNaira: number;
+  korapayCharge: string;
+  totalCharge: string;
   perSecond: string;
   per20Seconds: string;
   highlighted: boolean;
@@ -24,6 +50,7 @@ export const membershipPackages: MembershipPackage[] = [
     name: "Jovia Silver",
     accessFee: "₦9,000",
     amountNaira: 9000,
+    ...withKorapayCharge(9000),
     perSecond: "₦50",
     per20Seconds: "₦1,000",
     highlighted: false,
@@ -48,6 +75,7 @@ export const membershipPackages: MembershipPackage[] = [
     name: "Jovia Gold",
     accessFee: "₦15,000",
     amountNaira: 15000,
+    ...withKorapayCharge(15000),
     perSecond: "₦100",
     per20Seconds: "₦2,000",
     highlighted: true,

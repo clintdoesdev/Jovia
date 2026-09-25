@@ -1,3 +1,5 @@
+import { membershipPackages, korapayFeeRate } from "@/lib/config/tiers";
+
 // Single source of truth for the homepage FAQ — rendered both as the
 // visible accordion (components/Faq.tsx) and as FAQPage JSON-LD
 // (app/page.tsx). Google requires these to match exactly, so don't let
@@ -25,11 +27,17 @@ export const homeFaqs = [
   },
   {
     q: "How do I join?",
-    a: "Create your account, then activate a Jovia Silver or Jovia Gold package whenever you're ready to begin earning.",
+    a: "Joining Jovia is invite-only. Message us on Telegram to get your invite link, then pay for a Jovia Silver or Jovia Gold package with KoraPay — your account is created the moment payment clears.",
+  },
+  {
+    q: "Are there any payment charges?",
+    a: `Yes. Package payments go through KoraPay, and its ${korapayFeeRate * 100}% processing charge is added to the access fee: ${membershipPackages
+      .map((p) => `${p.name} is ${p.accessFee} + ${p.korapayCharge} = ${p.totalCharge}`)
+      .join(", and ")}. The total is shown before you pay.`,
   },
   {
     q: "Can I cancel anytime?",
-    a: "Yes. Account creation is free, and there's no long-term commitment on either package.",
+    a: "Yes. The access fee is a one-time payment, and there's no long-term commitment on either package.",
   },
   {
     q: "How are reward tiers calculated?",

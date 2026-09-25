@@ -58,7 +58,7 @@ export async function initializePaymentAction(
     data: {
       userId: user?.id,
       packageId: pkg.id,
-      amount: pkg.amountNaira,
+      amount: pkg.totalNaira,
       currency: "NGN",
       reference,
       status: "pending",
@@ -68,7 +68,7 @@ export async function initializePaymentAction(
   });
 
   const result = await initializeKorapayCharge({
-    amount: pkg.amountNaira,
+    amount: pkg.totalNaira,
     currency: "NGN",
     reference,
     customerName,

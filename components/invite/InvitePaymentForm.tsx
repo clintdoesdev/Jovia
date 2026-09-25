@@ -4,6 +4,7 @@ import { useActionState, useState } from "react";
 import { initializeInvitePaymentAction, type ActionState } from "@/lib/actions/invite-flow";
 import { FieldInput } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
+import { PriceBreakdown } from "@/components/payment/PriceBreakdown";
 import { membershipPackages, type MembershipPackage } from "@/lib/config/tiers";
 
 const initialState: ActionState = {};
@@ -31,6 +32,7 @@ export function InvitePaymentForm({
       <p className="mt-1 text-sm font-semibold text-gold-400">
         {pkg.perSecond}/sec · {pkg.per20Seconds} every 20 seconds
       </p>
+      <PriceBreakdown pkg={pkg} className="mt-4 rounded-xl border border-border-soft p-4" />
 
       {!presetPackage && (
         <div className="mt-5">
@@ -45,7 +47,7 @@ export function InvitePaymentForm({
           >
             {membershipPackages.map((p) => (
               <option key={p.id} value={p.id}>
-                {p.name} ({p.accessFee})
+                {p.name} ({p.accessFee} + {p.korapayCharge} KoraPay charge)
               </option>
             ))}
           </select>
@@ -71,7 +73,7 @@ export function InvitePaymentForm({
       )}
 
       <Button type="submit" variant="cta" className="mt-6 w-full py-3.5 text-base" disabled={pending}>
-        {pending ? "Starting payment…" : `Pay ${pkg.accessFee} with KoraPay`}
+        {pending ? "Starting payment…" : `Pay ${pkg.totalCharge} with KoraPay`}
       </Button>
     </form>
   );

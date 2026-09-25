@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 import { installSteps } from "@/lib/content/install-steps";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import { telegramVendorUrl } from "@/lib/telegram";
 
@@ -15,13 +15,7 @@ const title = "The Jovia App — Install on Any Device";
 const description =
   "Jovia is an installable web app — add it to your home screen on iPhone, Android, or desktop for one-tap access to your dashboard.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/jovia-app" },
-  openGraph: { title, description, url: "/jovia-app" },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({ title, description, path: "/jovia-app" });
 
 const webAppJsonLd = {
   "@context": "https://schema.org",
